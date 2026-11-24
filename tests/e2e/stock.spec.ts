@@ -1,13 +1,8 @@
 import { expect, test, type Page } from "@playwright/test";
-import { useEnglish } from "./helpers";
 
 // Changes the demo supplier's Cabbage and puts it back; run one at a time.
 test.describe.configure({ mode: "serial" });
 test.use({ serviceWorkers: "allow" });
-
-test.beforeEach(async ({ page }) => {
-  await useEnglish(page);
-});
 
 const row = (page: Page, name: string) => page.getByRole("listitem").filter({ hasText: name });
 const statusButton = (page: Page, name: string) =>
@@ -30,7 +25,7 @@ test("products are grouped by category, with search and counts", async ({ page }
   await expect(page.getByText(/^15 products · \d+ low · \d+ out/)).toBeVisible();
   await expect(statusButton(page, "Spinach")).toHaveAccessibleName(/Out/);
 
-  // Search finds English or Swahili names.
+  // Search also finds the optional Swahili name (staff may type "nyanya").
   await page.getByRole("searchbox", { name: "Search products" }).fill("nyan");
   await expect(row(page, "Tomatoes")).toBeVisible();
   await expect(page.getByRole("region").getByRole("listitem")).toHaveCount(1);

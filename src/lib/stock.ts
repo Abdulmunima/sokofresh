@@ -14,14 +14,12 @@ export function nextStockStatus(status: StockStatus): StockStatus {
   return CYCLE[(CYCLE.indexOf(status) + 1) % CYCLE.length];
 }
 
-export function displayName(
-  item: { name: string; name_sw: string | null },
-  locale: string,
-): string {
-  return locale === "sw" && item.name_sw ? item.name_sw : item.name;
+/** The name shown in the app (English; the optional Swahili name only helps search). */
+export function displayName(item: { name: string }): string {
+  return item.name;
 }
 
-/** Case- and accent-insensitive match on the English or Swahili name. */
+/** Case- and accent-insensitive match on the name (or the optional Swahili name, e.g. "nyanya"). */
 export function matchesSearch(
   item: { name: string; name_sw: string | null },
   query: string,

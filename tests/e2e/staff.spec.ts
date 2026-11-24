@@ -1,5 +1,5 @@
 import { expect, test, type BrowserContext } from "@playwright/test";
-import { DEMO, logIn, rpc, toE164, useEnglish } from "./helpers";
+import { DEMO, logIn, rpc, toE164 } from "./helpers";
 
 test.describe.configure({ mode: "serial" });
 
@@ -50,7 +50,6 @@ test("the owner adds a person, who logs in as staff without money screens", asyn
   // The new person logs in on their own phone.
   theirPhone = await browser.newContext({ storageState: { cookies: [], origins: [] } });
   const staffPage = await theirPhone.newPage();
-  await useEnglish(staffPage);
   await logIn(staffPage, DEMO.newStaff.phone);
   await expect(staffPage).toHaveURL(/\/orders$/);
   await staffPage.goto("/more");

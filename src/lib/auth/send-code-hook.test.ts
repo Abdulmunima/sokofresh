@@ -29,15 +29,15 @@ function signedRequest(payload: object, secret = secretB64) {
   });
 }
 
-const event = (language?: string) => ({
-  user: { phone: "254712345678", user_metadata: language ? { language } : {} },
+const event = () => ({
+  user: { phone: "254712345678" },
   sms: { otp: "123456" },
 });
 
 describe("send-code hook", () => {
-  it("sends the code on WhatsApp in the user's language", async () => {
+  it("sends the code on WhatsApp", async () => {
     const send = vi.fn().mockResolvedValue(undefined);
-    const res = await handleSendCodeHook(signedRequest(event("sw")), {
+    const res = await handleSendCodeHook(signedRequest(event()), {
       secret: SECRET,
       whatsApp,
       production: true,
@@ -45,7 +45,7 @@ describe("send-code hook", () => {
     });
     expect(res.status).toBe(200);
     expect(await res.json()).toEqual({});
-    expect(send).toHaveBeenCalledWith(whatsApp, "+254712345678", "123456", "sw");
+    expect(send).toHaveBeenCalledWith(whatsApp, "+254712345678", "123456");
   });
 
   it("rejects requests that are not signed by Supabase", async () => {
@@ -98,7 +98,7 @@ describe("send-code hook", () => {
 
 describe("authCodeMessage", () => {
   it("builds an authentication template with the code in body and copy button", () => {
-    expect(authCodeMessage("+254712345678", "654321", "en", "sokofresh_login_code")).toEqual({
+    expect(authCodeMessage("+254712345678", "654321", "sokofresh_login_code")).toEqual({
       messaging_product: "whatsapp",
       recipient_type: "individual",
       to: "254712345678",

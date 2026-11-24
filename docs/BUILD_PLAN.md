@@ -6,8 +6,8 @@ Work top to bottom. Each task is sized for one Claude Code session. Tick the box
 
 - [x] **0.0 Schema fixes.** `0002_fixes.sql`: balances, tenant-safe keys, staff permissions, verified phones, due dates, plan limits, consent. `pnpm test:db` runs 25 checks.
 
-- [x] **0.1 Scaffold the app.** Next.js (App Router, TS strict, Tailwind, ESLint) with pnpm; add `next-intl` (en, sw), Vitest, Playwright (Pixel 5 viewport), Prettier. Fill in the Commands section of `CLAUDE.md`.
-  *Done when:* `pnpm dev` shows a hello page in English and Swahili; lint, typecheck and a sample test pass.
+- [x] **0.1 Scaffold the app.** Next.js (App Router, TS strict, Tailwind, ESLint) with pnpm; add `next-intl`, Vitest, Playwright (Pixel 5 viewport), Prettier. Fill in the Commands section of `CLAUDE.md`.
+  *Done when:* `pnpm dev` shows a hello page; lint, typecheck and a sample test pass.
 - [x] **0.2 Supabase locally.** `supabase init`, keep `supabase/migrations/0001_init.sql`, add `supabase/seed.sql` with one demo supplier ("Mama Mboga Wholesale"), 3 staff, 15 products, 8 customers, 20 orders, some payments. Generate TS types.
   *Done when:* `supabase db reset` runs clean and the types file exists.
 - [x] **0.3 App shell.** Mobile layout with four bottom tabs (Orders, Stock, Payments, More), language toggle, big-button UI kit (Button, ListItem, StatusChip, MoneyText, PhoneInput, BottomSheet, Toast with Undo).
@@ -56,7 +56,7 @@ Work top to bottom. Each task is sized for one Claude Code session. Tick the box
 
 ## M6 — WhatsApp share buttons (F9 step 1)
 
-- [ ] **6.1 Message templates (en/sw):** order confirmation, out for delivery, receipt, statement, payment reminder, today's price list.
+- [ ] **6.1 Message templates:** order confirmation, out for delivery, receipt, statement, payment reminder, today's price list.
 - [ ] **6.2 Share buttons** on order detail, customer detail and Stock tab, using `waLink`; log to `message_log` with channel `whatsapp_link`.
 
 ## M7 — Subscription (F7)

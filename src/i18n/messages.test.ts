@@ -1,26 +1,19 @@
 import { describe, expect, it } from "vitest";
 import en from "../../messages/en.json";
-import sw from "../../messages/sw.json";
 
-function keys(obj: object, prefix = ""): string[] {
+function entries(obj: object, prefix = ""): [string, unknown][] {
   return Object.entries(obj).flatMap(([k, v]) =>
-    v && typeof v === "object" ? keys(v, `${prefix}${k}.`) : [`${prefix}${k}`],
+    v && typeof v === "object" && !Array.isArray(v)
+      ? entries(v, `${prefix}${k}.`)
+      : [[`${prefix}${k}`, v]],
   );
 }
 
-describe("translations", () => {
-  it("English and Swahili have exactly the same keys", () => {
-    expect(keys(sw).sort()).toEqual(keys(en).sort());
-  });
-
-  it("no translation is empty", () => {
-    for (const messages of [en, sw]) {
-      for (const key of keys(messages)) {
-        const value = key
-          .split(".")
-          .reduce<unknown>((o, k) => (o as Record<string, unknown>)[k], messages);
-        expect(value, key).not.toBe("");
-      }
+describe("wording", () => {
+  it("has no empty strings", () => {
+    for (const [key, value] of entries(en)) {
+      if (Array.isArray(value)) value.forEach((v, i) => expect(v, `${key}.${i}`).not.toBe(""));
+      else expect(value, key).not.toBe("");
     }
   });
 });

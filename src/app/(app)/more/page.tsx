@@ -1,6 +1,5 @@
-import { Languages, Palette, UserRound, Users } from "lucide-react";
+import { Palette, UserRound, Users } from "lucide-react";
 import { getTranslations } from "next-intl/server";
-import { LanguageSwitch } from "@/components/shell/language-switch";
 import { PageHeader } from "@/components/shell/page-header";
 import { List, ListItem } from "@/components/ui/list-item";
 import { SignOutButton } from "@/components/shell/sign-out-button";
@@ -26,13 +25,6 @@ export default async function MorePage() {
           subtitle={`${t(`Account.roles.${me.role}`)} · ${me.supplierName}`}
         />
       </List>
-      <section className="flex flex-col gap-3 px-4 py-4">
-        <h2 className="flex items-center gap-2 text-lg font-bold">
-          <Languages aria-hidden className="text-brand size-5" />
-          {t("Language.label")}
-        </h2>
-        <LanguageSwitch />
-      </section>
       <List className="border-border border-t">
         {canViewTeam(me.role) && (
           <ListItem

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
-import { LanguageSwitch } from "@/components/shell/language-switch";
 import { nextStep, SETUP_STEPS, stepHref, type SetupStep } from "@/lib/onboarding";
 
 /** One wizard step: progress, title, the form, and "Skip for now". */
@@ -26,7 +25,6 @@ export async function SetupFrame({
         <p className="text-muted text-sm font-semibold">
           {t("progress", { step: index + 1, total: SETUP_STEPS.length })}
         </p>
-        <LanguageSwitch variant="compact" />
       </div>
       <div
         role="progressbar"

@@ -69,10 +69,6 @@ export function toE164(local: string) {
   return `+254${local.replace(/^0/, "")}`;
 }
 
-export async function useEnglish(page: Page) {
-  await page.context().addCookies([{ name: "NEXT_LOCALE", value: "en", url: "http://localhost" }]);
-}
-
 /** Ask for a code on the login screen; returns the code that was sent. */
 export async function requestCode(page: Page, phone: string, { goto = true } = {}) {
   if (goto) await page.goto("/login");

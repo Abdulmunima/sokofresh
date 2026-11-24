@@ -36,7 +36,7 @@ Phase 1 is designed for two people inside the supplier: the owner who pays, and 
 | Persona | Who they are | What they need | Tech comfort |
 | --- | --- | --- | --- |
 | **Supplier owner** (buyer) | Runs a small or mid-size wholesale business, 2–20 staff | See orders and money at a glance, know who owes what, stop losing orders | Uses WhatsApp and M-Pesa daily; moderate |
-| **Supplier staff** (daily user) | Counter, store or dispatch staff | Update stock, mark orders packed or delivered, record payments, without training | Low; often a shared or basic Android phone, may prefer Swahili |
+| **Supplier staff** (daily user) | Counter, store or dispatch staff | Update stock, mark orders packed or delivered, record payments, without training | Low; often a shared or basic Android phone, comfortable with everyday English |
 | **Customer** (orders, doesn't pay us in Phase 1) | Restaurants, hotels, kiosks, shops, caterers | See what's available and the price, place an order, know when it arrives | Mixed; comfortable with WhatsApp and M-Pesa |
 
 **Design for the staff member, not the owner.** If staff find it hard, they go back to WhatsApp and paper, and the owner cancels the subscription.
@@ -79,7 +79,7 @@ Simplicity is the product. Every screen should be usable by someone who has neve
 1. **One job per screen.** Big buttons, one main action, no menus several levels deep.
 2. **Four tabs, maximum.** Orders · Stock · Payments · More.
 3. **Pictures and words together.** Product photos and icons alongside labels, so staff with low literacy can still find things.
-4. **English and Swahili.** Language toggle from day one. Use everyday words, e.g. "Paid" rather than "Reconciled".
+4. **Plain English.** English only (Nov 2026 decision: target users all use English); everyday words, e.g. "Paid" rather than "Reconciled". All wording sits in one file so a language can be added later.
 5. **Feels like WhatsApp.** Familiar list-and-tap patterns. Order statuses are colored chips: New → Confirmed → Packed → Delivered.
 6. **Phone number login.** One-time SMS or WhatsApp code. No email or passwords.
 7. **Works on bad connections.** Light pages, offline-first stock and order screens that sync when back online, data-saving images.
@@ -237,7 +237,7 @@ Build one mobile-first web app (a PWA) instead of native apps. It installs to th
 | Hosting | Vercel | Simple deploys; preview links for testing with pilot suppliers |
 | Payments | Manual + SMS-paste logging; optional Safaricom Daraja C2B notifications | Tracks payments into the supplier's own accounts; SokoFresh never holds funds |
 | Messaging | WhatsApp share links now; WhatsApp Cloud API + SMS fallback (e.g. Africa's Talking) in P1 | Alerts where users already are |
-| Languages | i18n with English and Swahili string files | Swahili from day one |
+| Languages | English, with all wording in one string file (next-intl) | Another language can be added later without code changes |
 
 **Payment tracking (no money handled)**
 
@@ -264,7 +264,7 @@ Build one mobile-first web app (a PWA) instead of native apps. It installs to th
 | Weeks | Milestone | Done when |
 | --- | --- | --- |
 | 1–2 | Discovery | 8–10 supplier interviews; 3 suppliers agree to pilot; price and feature list confirmed |
-| 3–5 | Core app | F1 onboarding, F2 stock, F4 orders in English and Swahili; installable PWA |
+| 3–5 | Core app | F1 onboarding, F2 stock, F4 orders; installable PWA |
 | 6–7 | Customer link + delivery | F3 and F5 live; first real customer order through a link |
 | 8–9 | Payments | F6 terms, credit and tracking; F9 WhatsApp share buttons; Daraja auto-detection with 1 pilot supplier |
 | 10 | Billing | F7 subscription STK push, trial, grace period, read-only mode |

@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     id: "/",
     name: "SokoFresh",
     short_name: "SokoFresh",
-    description: "Stock, orders and payments in one place. / Bidhaa, oda na malipo mahali pamoja.",
+    description: "Stock, orders and payments in one place.",
     start_url: "/orders",
     scope: "/",
     display: "standalone",

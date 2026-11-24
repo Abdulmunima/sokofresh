@@ -1,7 +1,6 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { getLocale } from "next-intl/server";
 import { createClient } from "@/lib/supabase/server";
 import { normalisePhoneKE } from "@/lib/phone";
 import { safeNext } from "@/lib/auth/paths";
@@ -22,8 +21,7 @@ export async function sendCode(rawPhone: string): Promise<SendCodeResult> {
   const supabase = await createClient();
   const { error } = await supabase.auth.signInWithOtp({
     phone,
-    // The send-code hook reads the language to pick the English or Swahili WhatsApp template.
-    options: { shouldCreateUser: true, data: { language: await getLocale() } },
+    options: { shouldCreateUser: true },
   });
   if (error) {
     console.error("sendCode failed", error.status, error.code);

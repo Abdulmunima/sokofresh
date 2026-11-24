@@ -1,8 +1,5 @@
-export const locales = ["en", "sw"] as const;
+// English only (product decision, Nov 2026). All wording still lives in messages/en.json,
+// so another language can be added later by adding a file and a picker.
+export const locales = ["en"] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "en";
-export const LOCALE_COOKIE = "NEXT_LOCALE";
-
-export function isLocale(value: unknown): value is Locale {
-  return typeof value === "string" && (locales as readonly string[]).includes(value);
-}

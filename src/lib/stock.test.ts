@@ -39,10 +39,8 @@ describe("nextStockStatus", () => {
 
 describe("names and search", () => {
   const tomato = { name: "Tomatoes", name_sw: "Nyanya" };
-  it("shows the Swahili name when there is one", () => {
-    expect(displayName(tomato, "sw")).toBe("Nyanya");
-    expect(displayName(tomato, "en")).toBe("Tomatoes");
-    expect(displayName({ name: "Rice", name_sw: null }, "sw")).toBe("Rice");
+  it("shows the name", () => {
+    expect(displayName(tomato)).toBe("Tomatoes");
   });
   it("finds by either name, ignoring case and accents", () => {
     expect(matchesSearch(tomato, "nyan")).toBe(true);

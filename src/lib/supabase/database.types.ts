@@ -727,9 +727,11 @@ export type Database = {
           name: string;
           name_sw: string | null;
           photo_path: string | null;
+          price_changed_at: string | null;
           price_kes: number;
           qty: number | null;
           sort: number;
+          stock_changed_at: string | null;
           stock_status: Database["public"]["Enums"]["stock_status"];
           supplier_id: string;
           unit: string;
@@ -744,9 +746,11 @@ export type Database = {
           name: string;
           name_sw?: string | null;
           photo_path?: string | null;
+          price_changed_at?: string | null;
           price_kes: number;
           qty?: number | null;
           sort?: number;
+          stock_changed_at?: string | null;
           stock_status?: Database["public"]["Enums"]["stock_status"];
           supplier_id: string;
           unit?: string;
@@ -760,9 +764,11 @@ export type Database = {
           name?: string;
           name_sw?: string | null;
           photo_path?: string | null;
+          price_changed_at?: string | null;
           price_kes?: number;
           qty?: number | null;
           sort?: number;
+          stock_changed_at?: string | null;
           stock_status?: Database["public"]["Enums"]["stock_status"];
           supplier_id?: string;
           unit?: string;
@@ -1079,6 +1085,18 @@ export type Database = {
       refresh_order_payment_status: { Args: { p_order_id: string }; Returns: undefined };
       refresh_order_totals: { Args: { p_order_id: string }; Returns: undefined };
       send_login_code_dev: { Args: { event: Json }; Returns: Json };
+      set_product_price: {
+        Args: { p_changed_at: string; p_price: number; p_product_id: string };
+        Returns: string;
+      };
+      set_product_stock: {
+        Args: {
+          p_changed_at: string;
+          p_product_id: string;
+          p_status: Database["public"]["Enums"]["stock_status"];
+        };
+        Returns: string;
+      };
       team_members: {
         Args: { p_supplier_id: string };
         Returns: {

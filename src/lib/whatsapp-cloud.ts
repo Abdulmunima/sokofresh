@@ -4,7 +4,7 @@ import "server-only";
  * WhatsApp Business Platform (Cloud API). Phase 1 only uses it for login codes;
  * everything else is a free share link (lib/whatsapp.ts).
  *
- * Login codes use an approved template in the "Authentication" category with a
+ * Login codes use an approved English template in the "Authentication" category with a
  * copy-code button. Meta requires the code in both the body and the button.
  */
 export type WhatsAppConfig = {
@@ -26,12 +26,7 @@ export function whatsAppConfig(env: NodeJS.ProcessEnv = process.env): WhatsAppCo
   };
 }
 
-export function authCodeMessage(
-  toE164: string,
-  code: string,
-  language: "en" | "sw",
-  template: string,
-) {
+export function authCodeMessage(toE164: string, code: string, template: string, language = "en") {
   return {
     messaging_product: "whatsapp",
     recipient_type: "individual",
@@ -61,7 +56,6 @@ export async function sendAuthCode(
   config: WhatsAppConfig,
   toE164: string,
   code: string,
-  language: "en" | "sw",
   fetchImpl: typeof fetch = fetch,
 ): Promise<void> {
   const res = await fetchImpl(
@@ -72,7 +66,7 @@ export async function sendAuthCode(
         Authorization: `Bearer ${config.accessToken}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(authCodeMessage(toE164, code, language, config.template)),
+      body: JSON.stringify(authCodeMessage(toE164, code, config.template)),
       signal: AbortSignal.timeout(8000),
     },
   );

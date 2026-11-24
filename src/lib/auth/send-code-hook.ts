@@ -8,7 +8,6 @@ import { sendAuthCode, whatsAppConfig, type WhatsAppConfig } from "@/lib/whatsap
 const payloadSchema = z.object({
   user: z.object({
     phone: z.string().min(5),
-    user_metadata: z.record(z.string(), z.unknown()).optional(),
   }),
   sms: z.object({ otp: z.string().regex(/^\d{4,10}$/) }),
 });
@@ -49,7 +48,6 @@ export async function handleSendCodeHook(request: Request, deps: HookDeps): Prom
 
   const raw = user.phone.startsWith("+") ? user.phone : `+${user.phone}`;
   const phone = normalisePhoneKE(raw) ?? raw;
-  const language = user.user_metadata?.language === "sw" ? "sw" : "en";
 
   if (!whatsApp) {
     if (production) return hookError(500, "WhatsApp is not configured");
@@ -58,7 +56,7 @@ export async function handleSendCodeHook(request: Request, deps: HookDeps): Prom
   }
 
   try {
-    await send(whatsApp, phone, sms.otp, language);
+    await send(whatsApp, phone, sms.otp);
   } catch (error) {
     console.error("WhatsApp send failed", error instanceof Error ? error.message : error);
     return hookError(502, "Could not send the code on WhatsApp");

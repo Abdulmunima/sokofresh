@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { DEMO, logIn, rpc, toE164, useEnglish } from "./helpers";
+import { DEMO, logIn, rpc, toE164 } from "./helpers";
 
 type Catalog = {
   supplier: { name: string; slug: string };
@@ -15,10 +15,6 @@ test.beforeAll(async () => {
   // Start from a clean slate (dev project only, test numbers only).
   await rpc("dev_reset_test_user", { p_phone: toE164(DEMO.wizard.phone) });
   await rpc("dev_reset_test_user", { p_phone: toE164(DEMO.skipper.phone) });
-});
-
-test.beforeEach(async ({ page }) => {
-  await useEnglish(page);
 });
 
 test("a new owner sets up their business in 5 steps", async ({ page }) => {

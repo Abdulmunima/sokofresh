@@ -1,15 +1,11 @@
 import { expect, test } from "@playwright/test";
-import { DEMO, logIn, requestCode, useEnglish } from "./helpers";
+import { DEMO, logIn, requestCode } from "./helpers";
 
 // Supabase allows one code per number per minute, so each test uses its own demo number
 // and the owner's login comes from auth.setup.ts.
 
 test.describe("signed out", () => {
   test.use({ storageState: { cookies: [], origins: [] } });
-
-  test.beforeEach(async ({ page }) => {
-    await useEnglish(page);
-  });
 
   test("visitors are sent to log in, then back where they were going", async ({ page }) => {
     await page.goto("/stock");
@@ -20,13 +16,6 @@ test.describe("signed out", () => {
     await expect(page).toHaveURL(/\/stock$/);
     await page.goto("/more");
     await expect(page.getByText("Manager · Mama Mboga Wholesale")).toBeVisible();
-  });
-
-  test("login screen works in Swahili", async ({ page }) => {
-    await page.goto("/login");
-    await page.getByRole("button", { name: "Kiswahili" }).click();
-    await expect(page.getByRole("heading", { level: 1, name: "Ingia" })).toBeVisible();
-    await expect(page.getByRole("button", { name: "Tuma nambari kwa WhatsApp" })).toBeVisible();
   });
 
   test("a wrong phone number is explained before anything is sent", async ({ page }) => {

@@ -3,7 +3,7 @@
 import { CloudUpload, Package, Pencil, Search } from "lucide-react";
 import { useOffline } from "next/offline";
 import { useRouter } from "next/navigation";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { EmptyState } from "@/components/shell/empty-state";
 import { BottomSheet } from "@/components/ui/bottom-sheet";
@@ -44,7 +44,6 @@ export function StockScreen({
 }) {
   const t = useTranslations("Stock");
   const tUnits = useTranslations("Setup.units");
-  const locale = useLocale();
   const toast = useToast();
   const router = useRouter();
   const nextOffline = useOffline();
@@ -74,6 +73,7 @@ export function StockScreen({
       if (flushing || !navigator.onLine) return;
       flushing = true;
       let sent = 0;
+      const delivered: OutboxEntry[] = [];
       const rejected: OutboxEntry[] = [];
       try {
         // Keep going while changes made during sending are still waiting.
@@ -82,9 +82,12 @@ export function StockScreen({
             try {
               const r =
                 e.kind === "price"
-                  ? await setPrice(e.productId, e.value)
-                  : await setStockStatus(e.productId, e.value);
-              if (r.ok) return "sent";
+                  ? await setPrice(e.productId, e.value, e.at)
+                  : await setStockStatus(e.productId, e.value, e.at);
+              if (r.ok) {
+                delivered.push(e);
+                return "sent";
+              }
               if (r.error === "failed") return "offline";
               rejected.push(e);
               return "rejected";
@@ -97,6 +100,20 @@ export function StockScreen({
         }
       } finally {
         flushing = false;
+        // Keep showing what was just sent until fresh server data arrives (no flicker back
+        // to the old value), then drop it from the "waiting" list.
+        if (delivered.length) {
+          setOverrides((o) => {
+            const next = { ...o };
+            for (const e of delivered) {
+              next[e.productId] = {
+                ...next[e.productId],
+                ...(e.kind === "price" ? { price_kes: e.value } : { stock_status: e.value }),
+              };
+            }
+            return next;
+          });
+        }
         setPending(readOutbox(storage()));
       }
       if (rejected.length) {
@@ -209,14 +226,14 @@ export function StockScreen({
       {groups.map((group) => (
         <section
           key={group.key}
-          aria-label={group.category ? displayName(group.category, locale) : t("otherCategory")}
+          aria-label={group.category ? displayName(group.category) : t("otherCategory")}
         >
           <h2 className="bg-surface text-muted px-4 py-2 text-sm font-bold tracking-wide uppercase">
-            {group.category ? displayName(group.category, locale) : t("otherCategory")}
+            {group.category ? displayName(group.category) : t("otherCategory")}
           </h2>
           <ul className="divide-border divide-y">
             {group.products.map((p) => {
-              const name = displayName(p, locale);
+              const name = displayName(p);
               const waiting = pending.some((e) => e.productId === p.id);
               return (
                 <li key={p.id} className="flex min-h-16 items-center gap-2 pr-3">
@@ -270,7 +287,7 @@ export function StockScreen({
           save(
             { kind: "price", productId: p.id, value: price },
             { price_kes: p.price_kes },
-            t("priceChanged", { name: displayName(p, locale) }),
+            t("priceChanged", { name: displayName(p) }),
           );
         }}
       />
@@ -289,7 +306,6 @@ function PriceSheet({
 }) {
   const t = useTranslations("Stock");
   const tUnits = useTranslations("Setup.units");
-  const locale = useLocale();
   const [text, setText] = useState("");
   const [error, setError] = useState(false);
   const input = useRef<HTMLInputElement>(null);
@@ -308,7 +324,7 @@ function PriceSheet({
     <BottomSheet
       open={product !== null}
       onClose={onClose}
-      title={product ? displayName(product, locale) : ""}
+      title={product ? displayName(product) : ""}
     >
       {product && (
         <form

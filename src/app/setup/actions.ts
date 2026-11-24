@@ -1,7 +1,6 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { getLocale } from "next-intl/server";
 import { getCurrentUser, requireManager } from "@/lib/auth/session";
 import {
   BUSINESS_TYPES,
@@ -34,7 +33,6 @@ export async function createBusiness(name: string): Promise<StepResult> {
   const { error } = await supabase.rpc("create_business", {
     p_name: parsed.data,
     p_slug: slugify(parsed.data),
-    p_language: await getLocale(),
   });
   if (error) {
     if (error.message.includes("already_has_business")) redirect("/orders");

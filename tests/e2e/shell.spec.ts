@@ -1,21 +1,11 @@
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
 const tabs = [
-  { en: "Orders", sw: "Oda", path: "/orders" },
-  { en: "Stock", sw: "Bidhaa", path: "/stock" },
-  { en: "Payments", sw: "Malipo", path: "/payments" },
-  { en: "More", sw: "Zaidi", path: "/more" },
+  { name: "Orders", path: "/orders" },
+  { name: "Stock", path: "/stock" },
+  { name: "Payments", path: "/payments" },
+  { name: "More", path: "/more" },
 ];
-
-async function useLanguage(page: Page, locale: "en" | "sw") {
-  await page
-    .context()
-    .addCookies([{ name: "NEXT_LOCALE", value: locale, url: "http://localhost" }]);
-}
-
-test.beforeEach(async ({ page }) => {
-  await useLanguage(page, "en");
-});
 
 test("home opens the Orders tab", async ({ page }) => {
   await page.goto("/");
@@ -29,35 +19,17 @@ test("the four bottom tabs navigate and show which one is open", async ({ page }
   await expect(nav.getByRole("link")).toHaveCount(4);
 
   for (const tab of tabs) {
-    await nav.getByRole("link", { name: tab.en }).click();
+    await nav.getByRole("link", { name: tab.name }).click();
     await expect(page).toHaveURL(new RegExp(`${tab.path}$`));
-    await expect(page.getByRole("heading", { level: 1, name: tab.en })).toBeVisible();
-    await expect(nav.getByRole("link", { name: tab.en })).toHaveAttribute("aria-current", "page");
+    await expect(page.getByRole("heading", { level: 1, name: tab.name })).toBeVisible();
+    await expect(nav.getByRole("link", { name: tab.name })).toHaveAttribute("aria-current", "page");
   }
 });
 
-test("header switch changes every label to Swahili and back", async ({ page }) => {
+test("the app is in English, with no language switch", async ({ page }) => {
   await page.goto("/orders");
-  await page.getByRole("button", { name: "Kiswahili" }).click();
-  await expect(page.locator("html")).toHaveAttribute("lang", "sw");
-  const nav = page.getByRole("navigation", { name: "Menyu kuu" });
-  for (const tab of tabs) {
-    await expect(nav.getByRole("link", { name: tab.sw })).toBeVisible();
-  }
-  await expect(page.getByRole("heading", { level: 1, name: "Oda" })).toBeVisible();
-
-  await page.reload();
-  await expect(page.getByRole("heading", { level: 1, name: "Oda" })).toBeVisible();
-
-  await page.getByRole("button", { name: "English" }).click();
-  await expect(page.getByRole("heading", { level: 1, name: "Orders" })).toBeVisible();
-});
-
-test("More has a big language choice", async ({ page }) => {
-  await page.goto("/more");
-  const big = page.getByRole("group", { name: "Language" }).last();
-  await big.getByRole("button", { name: "Kiswahili" }).click();
-  await expect(page.getByRole("heading", { level: 1, name: "Zaidi" })).toBeVisible();
+  await expect(page.locator("html")).toHaveAttribute("lang", "en");
+  await expect(page.getByRole("group", { name: "Language" })).toHaveCount(0);
 });
 
 for (const path of ["/orders", "/stock", "/payments", "/more", "/more/design"]) {
@@ -132,13 +104,10 @@ test("phone input explains a wrong number in plain words", async ({ page }) => {
 test.describe("screenshots", () => {
   test.skip(process.platform !== "linux", "Screenshot baselines are recorded on Linux");
 
-  for (const locale of ["en", "sw"] as const) {
-    test(`orders shell (${locale})`, async ({ page }) => {
-      await useLanguage(page, locale);
-      await page.goto("/orders");
-      await expect(page).toHaveScreenshot(`orders-${locale}.png`);
-    });
-  }
+  test("orders shell", async ({ page }) => {
+    await page.goto("/orders");
+    await expect(page).toHaveScreenshot("orders.png");
+  });
 
   test("design preview", async ({ page }) => {
     await page.goto("/more/design");

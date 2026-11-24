@@ -3,10 +3,6 @@ import { expect, test, type Page } from "@playwright/test";
 // Service workers only run in the production build (which is what the e2e web server runs).
 test.use({ serviceWorkers: "allow" });
 
-test.beforeEach(async ({ page }) => {
-  await page.context().addCookies([{ name: "NEXT_LOCALE", value: "en", url: "http://localhost" }]);
-});
-
 /** Wait until the service worker controls the page and has saved the current URL. */
 async function waitUntilSaved(page: Page, path: string) {
   await page.waitForFunction(() => navigator.serviceWorker?.controller != null, null, {
@@ -80,7 +76,6 @@ test("opens offline, showing the saved Orders and Stock screens", async ({ page,
   // A screen never opened before shows the friendly offline page.
   await page.getByRole("link", { name: "Payments" }).click();
   await expect(page.getByRole("heading", { name: "You're offline" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Huna mtandao" })).toBeVisible();
 
   // Back online: the banner goes away by itself.
   await context.setOffline(false);

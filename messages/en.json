@@ -10,13 +10,6 @@
     "payments": "Payments",
     "more": "More"
   },
-  "Language": {
-    "label": "Language",
-    "en": "English",
-    "sw": "Kiswahili",
-    "enShort": "EN",
-    "swShort": "SW"
-  },
   "Common": {
     "undo": "Undo",
     "close": "Close"
