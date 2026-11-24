@@ -7,5 +7,7 @@ export default defineConfig({
   test: {
     environment: "node",
     include: ["src/**/*.test.{ts,tsx}"],
+    // "server-only" throws outside a React Server environment; tests import server modules directly.
+    alias: { "server-only": new URL("./src/test/empty.ts", import.meta.url).pathname },
   },
 });

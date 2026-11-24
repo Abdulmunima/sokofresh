@@ -1,5 +1,7 @@
 -- Sanity checks on the demo data (runs after seed.sql in scripts/test-db.sh).
 begin;
+-- test helpers must be callable after switching roles (0004 locks new functions by default)
+alter default privileges grant execute on functions to public;
 create function pg_temp.eq(label text, got anyelement, want anyelement) returns void language plpgsql as $$
 begin
   if got is distinct from want then raise exception 'FAIL %: got %, want %', label, got, want; end if;

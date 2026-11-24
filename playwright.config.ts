@@ -13,13 +13,22 @@ export default defineConfig({
     trace: "off",
   },
   // Design target: a cheap Android phone. 360px wide is the smallest screen we design for.
+  // The setup project logs in once as the demo owner (needs the Supabase project in .env.local).
   projects: [
-    { name: "pixel-5", use: { ...devices["Pixel 5"] } },
+    { name: "setup", testMatch: /auth\.setup\.ts/, use: { ...devices["Pixel 5"] } },
+    {
+      name: "pixel-5",
+      dependencies: ["setup"],
+      use: { ...devices["Pixel 5"], storageState: "playwright/.auth/owner.json" },
+    },
     {
       name: "android-360",
+      dependencies: ["setup"],
+      testIgnore: /auth\.spec\.ts/, // login flows run once, on pixel-5
       use: {
         ...devices["Pixel 5"],
         viewport: { width: 360, height: 740 },
+        storageState: "playwright/.auth/owner.json",
       },
     },
   ],

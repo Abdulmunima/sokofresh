@@ -1,5 +1,7 @@
 -- Regression tests for the review fixes in 0002. Runs inside one transaction and rolls back.
 begin;
+-- test helpers must be callable after switching roles (0004 locks new functions by default)
+alter default privileges grant execute on functions to public;
 set constraints all immediate;
 
 create function pg_temp.eq(label text, got anyelement, want anyelement) returns void language plpgsql as $$

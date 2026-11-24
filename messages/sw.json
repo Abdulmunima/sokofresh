@@ -90,5 +90,41 @@
     "banner": "Huna mtandao.",
     "savedAt": "Unaona kilichohifadhiwa saa {time}. Mabadiliko yanahitaji mtandao.",
     "savedUnknown": "Unaona nakala ya mwisho iliyohifadhiwa. Mabadiliko yanahitaji mtandao."
+  },
+  "Login": {
+    "title": "Ingia",
+    "sendCode": "Tuma nambari kwa WhatsApp",
+    "sending": "Inatuma…",
+    "phoneHint": "Tutatuma nambari ya tarakimu 6 kwa nambari hii kwenye WhatsApp. Hakuna nenosiri.",
+    "codeSent": "Tumetuma nambari kwa WhatsApp kwenda <b>{phone}</b>.",
+    "codeLabel": "Nambari ya tarakimu 6",
+    "logIn": "Ingia",
+    "checking": "Inakagua…",
+    "changeNumber": "Badilisha nambari",
+    "resend": "Tuma tena",
+    "resendIn": "Tuma tena ({seconds}s)",
+    "errors": {
+      "invalid_phone": "Angalia nambari. Inapaswa kuwa kama 0712 345 678.",
+      "too_many": "Umejaribu mara nyingi. Subiri dakika moja ujaribu tena.",
+      "send_failed": "Hatukuweza kutuma nambari. Angalia nambari ujaribu tena.",
+      "invalid_code": "Nambari si sahihi. Angalia WhatsApp ujaribu tena.",
+      "expired": "Nambari imeisha muda. Gusa \"Tuma tena\".",
+      "failed": "Kuna tatizo. Jaribu tena."
+    }
+  },
+  "Welcome": {
+    "title": "Sajili biashara yako",
+    "body": "Umeingia kama {phone}, lakini nambari hii bado haiko kwenye biashara yoyote.",
+    "staffHint": "Unafanya kazi kwa msambazaji? Mwombe mwenye biashara aongeze nambari hii kama mfanyakazi, kisha uingie tena."
+  },
+  "Account": {
+    "title": "Akaunti yako",
+    "signOut": "Toka",
+    "signedInAs": "Umeingia kama {phone}",
+    "roles": {
+      "owner": "Mmiliki",
+      "manager": "Meneja",
+      "staff": "Mfanyakazi"
+    }
   }
 }

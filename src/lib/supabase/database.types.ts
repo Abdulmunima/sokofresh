@@ -238,6 +238,28 @@ export type Database = {
           },
         ];
       };
+      login_code_outbox: {
+        Row: {
+          code: string;
+          created_at: string;
+          id: number;
+          phone: string;
+        };
+        ComputedFields: never;
+        Insert: {
+          code: string;
+          created_at?: string;
+          id?: never;
+          phone: string;
+        };
+        Update: {
+          code?: string;
+          created_at?: string;
+          id?: never;
+          phone?: string;
+        };
+        Relationships: [];
+      };
       memberships: {
         Row: {
           created_at: string;
@@ -1022,6 +1044,7 @@ export type Database = {
       plan_limit: { Args: { sid: string; what: string }; Returns: number };
       refresh_order_payment_status: { Args: { p_order_id: string }; Returns: undefined };
       refresh_order_totals: { Args: { p_order_id: string }; Returns: undefined };
+      send_login_code_dev: { Args: { event: Json }; Returns: Json };
       verified_phone: { Args: { p_user: string }; Returns: string };
     };
     Enums: {
