@@ -6,11 +6,11 @@ Phase 1 supplier app for Nairobi wholesale suppliers — stock, orders, delivery
 
 ## What's here
 
-| Path | What it is |
-| --- | --- |
-| `CLAUDE.md` | Rules Claude Code follows in every session (stack, non-negotiables, workflow) |
-| `docs/PRD.md` | Product requirements — what to build and why |
-| `docs/BUILD_PLAN.md` | Ordered task list (M0 → M8, then P1) with "done when" checks |
+| Path                                | What it is                                                                           |
+| ----------------------------------- | ------------------------------------------------------------------------------------ |
+| `CLAUDE.md`                         | Rules Claude Code follows in every session (stack, non-negotiables, workflow)        |
+| `docs/PRD.md`                       | Product requirements — what to build and why                                         |
+| `docs/BUILD_PLAN.md`                | Ordered task list (M0 → M8, then P1) with "done when" checks                         |
 | `supabase/migrations/0001_init.sql` | Database schema, triggers, balance views, row-level security (tested on Postgres 16) |
 
 ## Getting started with Claude Code

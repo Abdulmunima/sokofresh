@@ -33,9 +33,18 @@ SokoFresh is a subscription app for Nairobi wholesale suppliers: stock list, ord
 - When something in the PRD is ambiguous, choose the simplest option for a non-technical user, note the assumption in the task summary, and keep going.
 - Add any new schema change as a new numbered migration; never edit an applied migration.
 
-## Commands (fill in after task 0.1 scaffolds the app)
+## Commands
 
-- `pnpm dev` — run locally
-- `pnpm test` / `pnpm test:e2e`
-- `pnpm lint` / `pnpm typecheck`
-- `supabase start` / `supabase db reset` — local database with migrations + seed
+- `pnpm dev` — run locally (http://localhost:3000)
+- `pnpm build` / `pnpm start` — production build
+- `pnpm lint` / `pnpm typecheck` / `pnpm format` (Prettier)
+- `pnpm test` — unit tests (Vitest, `src/**/*.test.ts`)
+- `pnpm test:e2e` — Playwright on a Pixel 5 viewport (`tests/e2e`); builds and starts the app itself
+- `pnpm test:db` — applies every migration to a throwaway database on any Postgres 15+ and runs `supabase/tests/*.test.sql` (set `PGHOST`/`PGPORT`/`PGUSER`)
+- `supabase start` / `supabase db reset` — local Supabase with migrations + seed (needs Docker)
+
+## Notes
+
+- Next.js is version 16. Read `AGENTS.md` and the guides in `node_modules/next/dist/docs/` before using an API you are unsure of. Cache Components is **off** (see `next.config.ts`).
+- Language comes from the `NEXT_LOCALE` cookie (no `/en` or `/sw` in URLs). Use `getTranslations` in server components and `useTranslations` in client components.
+- `0002_fixes.sql` changed the balance views: use `outstanding_kes`, `overdue_kes`, `credit_kes` and `net_balance_kes` from `customer_balances`. Due dates are set by a trigger from the customer's terms (credit counts from the delivery date). `created_by` defaults to the logged-in user.

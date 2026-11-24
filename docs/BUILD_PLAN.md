@@ -4,7 +4,9 @@ Work top to bottom. Each task is sized for one Claude Code session. Tick the box
 
 ## M0 — Foundations
 
-- [ ] **0.1 Scaffold the app.** Next.js (App Router, TS strict, Tailwind, ESLint) with pnpm; add `next-intl` (en, sw), Vitest, Playwright (Pixel 5 viewport), Prettier. Fill in the Commands section of `CLAUDE.md`.
+- [x] **0.0 Schema fixes.** `0002_fixes.sql`: balances, tenant-safe keys, staff permissions, verified phones, due dates, plan limits, consent. `pnpm test:db` runs 25 checks.
+
+- [x] **0.1 Scaffold the app.** Next.js (App Router, TS strict, Tailwind, ESLint) with pnpm; add `next-intl` (en, sw), Vitest, Playwright (Pixel 5 viewport), Prettier. Fill in the Commands section of `CLAUDE.md`.
   *Done when:* `pnpm dev` shows a hello page in English and Swahili; lint, typecheck and a sample test pass.
 - [ ] **0.2 Supabase locally.** `supabase init`, keep `supabase/migrations/0001_init.sql`, add `supabase/seed.sql` with one demo supplier ("Mama Mboga Wholesale"), 3 staff, 15 products, 8 customers, 20 orders, some payments. Generate TS types.
   *Done when:* `supabase db reset` runs clean and the types file exists.

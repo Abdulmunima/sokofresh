@@ -1,0 +1,16 @@
+{
+  "App": {
+    "name": "SokoFresh",
+    "tagline": "Stock, orders and payments in one place."
+  },
+  "Home": {
+    "welcome": "Welcome",
+    "intro": "Take orders, update your stock and see who has paid — from your phone.",
+    "comingSoon": "The app is being built. Check back soon."
+  },
+  "Language": {
+    "label": "Language",
+    "en": "English",
+    "sw": "Kiswahili"
+  }
+}

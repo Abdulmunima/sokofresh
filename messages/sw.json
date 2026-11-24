@@ -1,0 +1,16 @@
+{
+  "App": {
+    "name": "SokoFresh",
+    "tagline": "Bidhaa, oda na malipo mahali pamoja."
+  },
+  "Home": {
+    "welcome": "Karibu",
+    "intro": "Pokea oda, sasisha bidhaa zako na uone nani amelipa — kwa simu yako.",
+    "comingSoon": "Programu inajengwa. Rudi hivi karibuni."
+  },
+  "Language": {
+    "label": "Lugha",
+    "en": "English",
+    "sw": "Kiswahili"
+  }
+}
