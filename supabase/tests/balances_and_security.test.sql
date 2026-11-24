@@ -15,7 +15,7 @@ create function pg_temp.as_admin() returns void language sql as $$
 $$;
 
 -- ── Fixture: suppliers A and B; owner A, staff A, owner B ──────────────
-insert into auth.users values
+insert into auth.users (id, phone) values
   ('a0000000-0000-4000-8000-00000000000a', '254700000001'),
   ('a0000000-0000-4000-8000-00000000000c', '254700000003'),
   ('b0000000-0000-4000-8000-00000000000b', '254700000002');

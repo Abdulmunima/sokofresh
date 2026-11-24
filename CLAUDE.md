@@ -41,10 +41,13 @@ SokoFresh is a subscription app for Nairobi wholesale suppliers: stock list, ord
 - `pnpm test` — unit tests (Vitest, `src/**/*.test.ts`)
 - `pnpm test:e2e` — Playwright on a Pixel 5 viewport (`tests/e2e`); builds and starts the app itself
 - `pnpm test:db` — applies every migration to a throwaway database on any Postgres 15+ and runs `supabase/tests/*.test.sql` (set `PGHOST`/`PGPORT`/`PGUSER`)
-- `supabase start` / `supabase db reset` — local Supabase with migrations + seed (needs Docker)
+- `pnpm db:types` — regenerate `src/lib/supabase/database.types.ts` from the migrations (plain Postgres; add `-- --local` when local Supabase is running). Run after every migration.
+- `pnpm exec supabase start` / `pnpm exec supabase db reset` — local Supabase with migrations + `supabase/seed.sql` (needs Docker)
+- Demo logins (local, code `123456`): `0712000001` owner · `0712000002` manager · `0712000003` staff — supplier "Mama Mboga Wholesale", link `/s/mama-mboga-wholesale`
 
 ## Notes
 
 - Next.js is version 16. Read `AGENTS.md` and the guides in `node_modules/next/dist/docs/` before using an API you are unsure of. Cache Components is **off** (see `next.config.ts`).
 - Language comes from the `NEXT_LOCALE` cookie (no `/en` or `/sw` in URLs). Use `getTranslations` in server components and `useTranslations` in client components.
 - `0002_fixes.sql` changed the balance views: use `outstanding_kes`, `overdue_kes`, `credit_kes` and `net_balance_kes` from `customer_balances`. Due dates are set by a trigger from the customer's terms (credit counts from the delivery date). `created_by` defaults to the logged-in user.
+- Import table types from `@/lib/supabase/types` (`Row<"products">`, `ViewRow<"customer_balances">`, `Enum<"order_status">`).

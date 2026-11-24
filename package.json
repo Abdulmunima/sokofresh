@@ -13,7 +13,8 @@
     "test:e2e": "playwright test",
     "test:db": "scripts/test-db.sh",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "db:types": "scripts/gen-types.sh"
   },
   "dependencies": {
     "next": "16.4.6",
@@ -32,6 +33,7 @@
     "eslint-config-next": "16.4.6",
     "prettier": "^3.10.1",
     "prettier-plugin-tailwindcss": "^0.8.1",
+    "supabase": "^3.3.0",
     "tailwindcss": "4.3.3",
     "typescript": "^5",
     "vite-tsconfig-paths": "^6.1.1",
