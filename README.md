@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SokoFresh (working name)
 
-## Getting Started
+Phase 1 supplier app for Nairobi wholesale suppliers — stock, orders, delivery days, payment & credit tracking, customer order link, WhatsApp sharing.
 
-First, run the development server:
+> "SokoFresh" is a placeholder: the name is already used by a Nairobi agritech company. Rename before branding.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## What's here
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Path | What it is |
+| --- | --- |
+| `CLAUDE.md` | Rules Claude Code follows in every session (stack, non-negotiables, workflow) |
+| `docs/PRD.md` | Product requirements — what to build and why |
+| `docs/BUILD_PLAN.md` | Ordered task list (M0 → M8, then P1) with "done when" checks |
+| `supabase/migrations/0001_init.sql` | Database schema, triggers, balance views, row-level security (tested on Postgres 16) |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Getting started with Claude Code
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Install the tools: Node 20+, pnpm, the Supabase CLI and Docker (for local Supabase), and Git.
+2. Unzip this folder, `cd` into it, run `git init`, and commit.
+3. Start Claude Code in the folder: `claude`
+4. Paste this as your first message:
 
-## Learn More
+   > Read CLAUDE.md, docs/PRD.md and docs/BUILD_PLAN.md. Then start M0: do task 0.1 (scaffold the app) and task 0.2 (local Supabase with the existing migration plus a seed file). Keep the existing files. Show me the plan first, then build, run the checks, and tick the tasks off in BUILD_PLAN.md.
 
-To learn more about Next.js, take a look at the following resources:
+5. After each task: try it on your phone (`pnpm dev`, then open your computer's local IP on the same Wi-Fi), commit, and ask for the next task.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Accounts you'll need later
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Supabase** project (database + phone login) and **Vercel** (hosting) — both have free tiers.
+- **SMS provider** for login codes (e.g. Africa's Talking) — needed by M1.
+- **Safaricom Daraja** developer account — sandbox for M7 (subscription STK push) and M8 (optional payment auto-detection).
+- **WhatsApp Business Platform** — only for P1 automated messages; Phase 1 share buttons need nothing.
