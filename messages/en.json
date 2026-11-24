@@ -113,7 +113,7 @@
   },
   "Welcome": {
     "title": "Set up your business",
-    "body": "You're logged in as {phone}, but this number isn't part of a business yet.",
+    "body": "Logged in as {phone}. What is your business called?",
     "staffHint": "Work for a supplier? Ask the owner to add this number as staff, then log in again."
   },
   "Account": {
@@ -124,6 +124,111 @@
       "owner": "Owner",
       "manager": "Manager",
       "staff": "Staff"
+    }
+  },
+  "Setup": {
+    "progress": "Step {step} of {total}",
+    "progressLabel": "Set-up progress",
+    "skip": "Skip for now",
+    "continue": "Continue",
+    "finish": "Finish",
+    "saving": "Saving…",
+    "name": {
+      "label": "Business name",
+      "placeholder": "e.g. Mama Mboga Wholesale",
+      "linkPreview": "Your order link will end with"
+    },
+    "type": {
+      "title": "What do you sell?",
+      "hint": "This helps us set things up for you.",
+      "options": {
+        "produce": "Fruit and vegetables",
+        "meat_fish": "Meat and fish",
+        "dry_goods": "Dry goods (flour, rice, sugar…)",
+        "beverages": "Drinks",
+        "packaging": "Packaging",
+        "other": "Something else"
+      }
+    },
+    "payments": {
+      "title": "How do customers pay you?",
+      "hint": "Customers see these on your order link. Tick all that you use.",
+      "till": "M-Pesa Till (Buy Goods)",
+      "tillNumber": "Till number",
+      "paybill": "M-Pesa Paybill",
+      "paybillNumber": "Paybill number",
+      "paybillAccount": "Account number customers should use",
+      "paybillAccountExample": "e.g. their name or phone",
+      "sendMoney": "M-Pesa Send Money",
+      "sendMoneyPhone": "M-Pesa phone number",
+      "bank": "Bank transfer",
+      "bankName": "Bank",
+      "bankAccountName": "Account name",
+      "bankAccountNumber": "Account number",
+      "cash": "Cash",
+      "neverTouch": "Customers pay you directly. SokoFresh never holds your money."
+    },
+    "delivery": {
+      "title": "When do you deliver?",
+      "hint": "Customers will see the next delivery time when they order. You can add areas and fees later.",
+      "days": "Delivery days",
+      "time": "Delivery time",
+      "cutoff": "Customers must order by",
+      "weekdays": {
+        "0": "Sun",
+        "1": "Mon",
+        "2": "Tue",
+        "3": "Wed",
+        "4": "Thu",
+        "5": "Fri",
+        "6": "Sat"
+      },
+      "windows": {
+        "morning": "Morning",
+        "midday": "Midday",
+        "afternoon": "Afternoon"
+      },
+      "cutoffs": {
+        "evening_before": "6pm the day before",
+        "noon_before": "12 noon the day before",
+        "two_hours": "2 hours before delivery"
+      }
+    },
+    "products": {
+      "title": "Add your first products",
+      "hint": "Start with up to 5 things you sell most. You can add more in Stock.",
+      "number": "Product {n}",
+      "name": "Product name",
+      "unit": "Sold by",
+      "price": "Price in Ksh",
+      "examples": [
+        "e.g. Tomatoes",
+        "e.g. Onions",
+        "e.g. Sukuma wiki",
+        "e.g. Potatoes",
+        "e.g. Cabbage"
+      ]
+    },
+    "units": {
+      "kg": "per kg",
+      "crate": "per crate",
+      "bag": "per bag",
+      "piece": "per piece",
+      "bunch": "per bunch",
+      "tray": "per tray",
+      "litre": "per litre",
+      "box": "per box"
+    },
+    "errors": {
+      "name_short": "Type your business name (at least 2 letters).",
+      "name_long": "That name is too long. Keep it under 80 letters.",
+      "failed": "Something went wrong. Try again.",
+      "number_invalid": "Check the number.",
+      "phone_invalid": "Check the number. It should look like 0712 345 678.",
+      "required": "Fill this in.",
+      "product_name": "Type the product name.",
+      "price_invalid": "Type the price in Ksh, e.g. 2500.",
+      "plan_limit": "Your plan doesn't allow more products."
     }
   }
 }

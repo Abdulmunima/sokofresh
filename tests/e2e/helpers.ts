@@ -6,8 +6,13 @@ export const DEMO = {
   owner: { phone: "0712000001", name: "Wanjiku Kamau", role: "Owner" },
   manager: { phone: "0712000002", name: "Otieno Ouma", role: "Manager" },
   staff: { phone: "0712000003", name: "Achieng Atieno", role: "Staff" },
+  /** Invited as staff in the seed data; their first login claims the invite. */
+  invited: { phone: "0712000004", role: "Staff" },
   /** A test number with no business, for the welcome screen. */
   newcomer: { phone: "0712000009" },
+  /** Fresh owners for the set-up wizard; their businesses are deleted before each run. */
+  wizard: { phone: "0712000101" },
+  skipper: { phone: "0712000102" },
 } as const;
 /** Fixed code for numbers set up as Supabase test numbers (local config.toml). */
 export const TEST_CODE = "123456";
@@ -19,6 +24,20 @@ function env(name: string): string {
     .find((l) => l.startsWith(`${name}=`));
   if (!line) throw new Error(`${name} missing from .env.local`);
   return line.slice(name.length + 1).trim();
+}
+
+/** Call a Supabase RPC as a signed-out visitor (dev helpers and the public catalogue). */
+export async function rpc<T>(name: string, args: Record<string, unknown>): Promise<T> {
+  const res = await fetch(`${env("NEXT_PUBLIC_SUPABASE_URL")}/rest/v1/rpc/${name}`, {
+    method: "POST",
+    headers: {
+      apikey: env("NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY"),
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(args),
+  });
+  if (!res.ok) throw new Error(`${name} failed: ${res.status} ${await res.text()}`);
+  return (await res.json()) as T;
 }
 
 /**
@@ -44,7 +63,7 @@ export async function latestLoginCode(e164: string, sentAfter: number): Promise<
   return TEST_CODE;
 }
 
-function toE164(local: string) {
+export function toE164(local: string) {
   return `+254${local.replace(/^0/, "")}`;
 }
 

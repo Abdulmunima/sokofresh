@@ -61,3 +61,10 @@ export const requireMember = cache(async (): Promise<CurrentMember> => {
 export function canSeeMoney(role: Enum<"member_role">): boolean {
   return role === "owner" || role === "manager";
 }
+
+/** Settings screens (set-up wizard, payment methods…): owners and managers only. */
+export async function requireManager(): Promise<CurrentMember> {
+  const me = await requireMember();
+  if (!canSeeMoney(me.role)) redirect("/orders");
+  return me;
+}

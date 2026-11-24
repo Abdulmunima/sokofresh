@@ -113,7 +113,7 @@
   },
   "Welcome": {
     "title": "Sajili biashara yako",
-    "body": "Umeingia kama {phone}, lakini nambari hii bado haiko kwenye biashara yoyote.",
+    "body": "Umeingia kama {phone}. Biashara yako inaitwaje?",
     "staffHint": "Unafanya kazi kwa msambazaji? Mwombe mwenye biashara aongeze nambari hii kama mfanyakazi, kisha uingie tena."
   },
   "Account": {
@@ -124,6 +124,105 @@
       "owner": "Mmiliki",
       "manager": "Meneja",
       "staff": "Mfanyakazi"
+    }
+  },
+  "Setup": {
+    "progress": "Hatua {step} kati ya {total}",
+    "progressLabel": "Maendeleo ya usajili",
+    "skip": "Ruka kwa sasa",
+    "continue": "Endelea",
+    "finish": "Maliza",
+    "saving": "Inahifadhi…",
+    "name": {
+      "label": "Jina la biashara",
+      "placeholder": "k.m. Mama Mboga Wholesale",
+      "linkPreview": "Kiungo chako cha oda kitaishia na"
+    },
+    "type": {
+      "title": "Unauza nini?",
+      "hint": "Hii inatusaidia kukuandalia mambo.",
+      "options": {
+        "produce": "Matunda na mboga",
+        "meat_fish": "Nyama na samaki",
+        "dry_goods": "Vyakula vikavu (unga, mchele, sukari…)",
+        "beverages": "Vinywaji",
+        "packaging": "Vifungashio",
+        "other": "Kitu kingine"
+      }
+    },
+    "payments": {
+      "title": "Wateja wanakulipa vipi?",
+      "hint": "Wateja wataona haya kwenye kiungo chako cha oda. Chagua zote unazotumia.",
+      "till": "M-Pesa Till (Buy Goods)",
+      "tillNumber": "Nambari ya Till",
+      "paybill": "M-Pesa Paybill",
+      "paybillNumber": "Nambari ya Paybill",
+      "paybillAccount": "Nambari ya akaunti wateja watumie",
+      "paybillAccountExample": "k.m. jina lao au simu",
+      "sendMoney": "M-Pesa Tuma Pesa",
+      "sendMoneyPhone": "Nambari ya simu ya M-Pesa",
+      "bank": "Benki",
+      "bankName": "Jina la benki",
+      "bankAccountName": "Jina la akaunti",
+      "bankAccountNumber": "Nambari ya akaunti",
+      "cash": "Pesa taslimu",
+      "neverTouch": "Wateja wanakulipa moja kwa moja. SokoFresh haishiki pesa zako."
+    },
+    "delivery": {
+      "title": "Unasafirisha lini?",
+      "hint": "Wateja wataona wakati unaofuata wa kufikishiwa wanapoagiza. Unaweza kuongeza maeneo na ada baadaye.",
+      "days": "Siku za kusafirisha",
+      "time": "Wakati wa kufikisha",
+      "cutoff": "Wateja waagize kabla ya",
+      "weekdays": {
+        "0": "Jpi",
+        "1": "Jtt",
+        "2": "Jnn",
+        "3": "Jtn",
+        "4": "Alh",
+        "5": "Ijm",
+        "6": "Jms"
+      },
+      "windows": {
+        "morning": "Asubuhi",
+        "midday": "Mchana",
+        "afternoon": "Alasiri"
+      },
+      "cutoffs": {
+        "evening_before": "Saa 12 jioni siku iliyotangulia",
+        "noon_before": "Saa 6 mchana siku iliyotangulia",
+        "two_hours": "Saa 2 kabla ya kufikisha"
+      }
+    },
+    "products": {
+      "title": "Ongeza bidhaa zako za kwanza",
+      "hint": "Anza na hadi bidhaa 5 unazouza zaidi. Unaweza kuongeza zaidi kwenye Bidhaa.",
+      "number": "Bidhaa {n}",
+      "name": "Jina la bidhaa",
+      "unit": "Inauzwa kwa",
+      "price": "Bei kwa Ksh",
+      "examples": ["k.m. Nyanya", "k.m. Vitunguu", "k.m. Sukuma wiki", "k.m. Viazi", "k.m. Kabichi"]
+    },
+    "units": {
+      "kg": "kwa kilo",
+      "crate": "kwa kreti",
+      "bag": "kwa gunia",
+      "piece": "kwa kipande",
+      "bunch": "kwa fungu",
+      "tray": "kwa trei",
+      "litre": "kwa lita",
+      "box": "kwa boksi"
+    },
+    "errors": {
+      "name_short": "Andika jina la biashara (angalau herufi 2).",
+      "name_long": "Jina ni refu sana. Liwe chini ya herufi 80.",
+      "failed": "Kuna tatizo. Jaribu tena.",
+      "number_invalid": "Angalia nambari.",
+      "phone_invalid": "Angalia nambari. Inapaswa kuwa kama 0712 345 678.",
+      "required": "Jaza hapa.",
+      "product_name": "Andika jina la bidhaa.",
+      "price_invalid": "Andika bei kwa Ksh, k.m. 2500.",
+      "plan_limit": "Mpango wako hauruhusu bidhaa zaidi."
     }
   }
 }

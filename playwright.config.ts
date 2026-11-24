@@ -24,7 +24,7 @@ export default defineConfig({
     {
       name: "android-360",
       dependencies: ["setup"],
-      testIgnore: /auth\.spec\.ts/, // login flows run once, on pixel-5
+      testIgnore: /(auth|onboarding)\.spec\.ts/, // login flows run once, on pixel-5
       use: {
         ...devices["Pixel 5"],
         viewport: { width: 360, height: 740 },

@@ -1051,7 +1051,12 @@ export type Database = {
       can_edit_payment: { Args: { p_payment_id: string }; Returns: boolean };
       can_manage_money: { Args: { sid: string }; Returns: boolean };
       claim_staff_invites: { Args: Record<PropertyKey, never>; Returns: number };
+      create_business: {
+        Args: { p_language?: string; p_name: string; p_slug: string };
+        Returns: string;
+      };
       dev_latest_login_code: { Args: { p_phone: string }; Returns: string };
+      dev_reset_test_user: { Args: { p_phone: string }; Returns: number };
       get_public_catalog: { Args: { p_slug: string }; Returns: Json };
       has_role: {
         Args: { roles: Database["public"]["Enums"]["member_role"][]; sid: string };
