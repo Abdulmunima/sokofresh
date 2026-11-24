@@ -10,11 +10,11 @@ Work top to bottom. Each task is sized for one Claude Code session. Tick the box
   *Done when:* `pnpm dev` shows a hello page in English and Swahili; lint, typecheck and a sample test pass.
 - [x] **0.2 Supabase locally.** `supabase init`, keep `supabase/migrations/0001_init.sql`, add `supabase/seed.sql` with one demo supplier ("Mama Mboga Wholesale"), 3 staff, 15 products, 8 customers, 20 orders, some payments. Generate TS types.
   *Done when:* `supabase db reset` runs clean and the types file exists.
-- [ ] **0.3 App shell.** Mobile layout with four bottom tabs (Orders, Stock, Payments, More), language toggle, big-button UI kit (Button, ListItem, StatusChip, MoneyText, PhoneInput, BottomSheet, Toast with Undo).
+- [x] **0.3 App shell.** Mobile layout with four bottom tabs (Orders, Stock, Payments, More), language toggle, big-button UI kit (Button, ListItem, StatusChip, MoneyText, PhoneInput, BottomSheet, Toast with Undo).
   *Done when:* shell renders at 360px; Playwright screenshot test.
 - [ ] **0.4 PWA + offline basics.** Installable manifest, icons, service worker caching the shell and last-viewed Orders/Stock data.
   *Done when:* Lighthouse PWA installable; app opens offline showing cached data.
-- [ ] **0.5 Shared helpers.** `normalisePhoneKE`, `formatKES`, `waLink(phone, text)`, Nairobi date helpers, with unit tests.
+- [ ] **0.5 Shared helpers.** ~~`normalisePhoneKE`~~, ~~`formatKES`~~ (done early in 0.3, `src/lib/phone.ts`, `src/lib/money.ts`), `waLink(phone, text)`, Nairobi date helpers, with unit tests.
 
 ## M1 — Accounts (F1)
 

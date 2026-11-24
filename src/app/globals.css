@@ -7,6 +7,9 @@
   --brand-foreground: #ffffff;
   --muted: #5c6670;
   --surface: #f3f5f4;
+  --border: #e2e6e4;
+  --brand-strong: #17602d;
+  --danger: #c62828;
 }
 
 @theme inline {
@@ -16,6 +19,9 @@
   --color-brand-foreground: var(--brand-foreground);
   --color-muted: var(--muted);
   --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-brand-strong: var(--brand-strong);
+  --color-danger: var(--danger);
   /* System fonts: nothing extra to download on slow networks. */
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
 }
@@ -24,4 +30,24 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+}
+
+/* Bottom sheet slides up. Respect reduced motion. */
+dialog.sheet[open] {
+  animation: sheet-up 180ms ease-out;
+}
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  dialog.sheet[open] {
+    animation: none;
+  }
+}
+
+/* No grey flash when tapping on Android. */
+* {
+  -webkit-tap-highlight-color: transparent;
 }

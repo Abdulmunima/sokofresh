@@ -17,6 +17,7 @@
     "db:types": "scripts/gen-types.sh"
   },
   "dependencies": {
+    "lucide-react": "^1.78.0",
     "next": "16.4.6",
     "next-intl": "4.16.0",
     "react": "19.3.0",

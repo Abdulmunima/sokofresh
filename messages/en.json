@@ -3,14 +3,84 @@
     "name": "SokoFresh",
     "tagline": "Stock, orders and payments in one place."
   },
-  "Home": {
-    "welcome": "Welcome",
-    "intro": "Take orders, update your stock and see who has paid — from your phone.",
-    "comingSoon": "The app is being built. Check back soon."
+  "Nav": {
+    "label": "Main menu",
+    "orders": "Orders",
+    "stock": "Stock",
+    "payments": "Payments",
+    "more": "More"
   },
   "Language": {
     "label": "Language",
     "en": "English",
-    "sw": "Kiswahili"
+    "sw": "Kiswahili",
+    "enShort": "EN",
+    "swShort": "SW"
+  },
+  "Common": {
+    "undo": "Undo",
+    "close": "Close"
+  },
+  "Phone": {
+    "label": "Phone number",
+    "hint": "For example 0712 345 678",
+    "invalid": "Check the number. It should look like 0712 345 678."
+  },
+  "OrderStatus": {
+    "new": "New",
+    "confirmed": "Confirmed",
+    "packed": "Packed",
+    "out_for_delivery": "Out for delivery",
+    "delivered": "Delivered",
+    "cancelled": "Cancelled"
+  },
+  "PaymentStatus": {
+    "unpaid": "Unpaid",
+    "part_paid": "Part-paid",
+    "paid": "Paid",
+    "overdue": "Overdue"
+  },
+  "StockStatus": {
+    "in_stock": "In stock",
+    "low": "Low",
+    "out": "Out"
+  },
+  "Orders": {
+    "emptyTitle": "No orders yet",
+    "emptyBody": "Orders from your link, phone calls, WhatsApp and walk-ins will all show here."
+  },
+  "Stock": {
+    "emptyTitle": "No products yet",
+    "emptyBody": "Add what you sell and its price. Customers will see it on your order link."
+  },
+  "Payments": {
+    "emptyTitle": "No payments yet",
+    "emptyBody": "Record cash, M-Pesa and bank payments here to see who has paid and who owes."
+  },
+  "More": {
+    "design": "Design preview",
+    "designHint": "See every button and label on this phone"
+  },
+  "Design": {
+    "intro": "Example screens with made-up data, to check how things look on this phone.",
+    "buttons": "Buttons",
+    "newOrder": "New order",
+    "call": "Call",
+    "skip": "Skip",
+    "orderRows": "Order list",
+    "exampleOrderLine": "Order #{number} · {items} items",
+    "markPacked": "Mark as packed",
+    "toastPacked": "Order marked as packed",
+    "orderChips": "Order status",
+    "paymentChips": "Payment status",
+    "stockChips": "Stock status",
+    "money": "Money",
+    "totalOwed": "Total owed to you",
+    "phone": "Phone number",
+    "sheet": "Bottom sheet",
+    "openSheet": "Open a sheet",
+    "sheetTitle": "Choose a customer",
+    "sheetBody": "Sheets slide up from the bottom for quick choices. Tap outside or the X to close.",
+    "done": "Done"
   }
 }

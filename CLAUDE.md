@@ -50,4 +50,7 @@ SokoFresh is a subscription app for Nairobi wholesale suppliers: stock list, ord
 - Next.js is version 16. Read `AGENTS.md` and the guides in `node_modules/next/dist/docs/` before using an API you are unsure of. Cache Components is **off** (see `next.config.ts`).
 - Language comes from the `NEXT_LOCALE` cookie (no `/en` or `/sw` in URLs). Use `getTranslations` in server components and `useTranslations` in client components.
 - `0002_fixes.sql` changed the balance views: use `outstanding_kes`, `overdue_kes`, `credit_kes` and `net_balance_kes` from `customer_balances`. Due dates are set by a trigger from the customer's terms (credit counts from the delivery date). `created_by` defaults to the logged-in user.
+- UI building blocks live in `src/components/ui` (Button, List/ListItem, Order/Payment/StockStatusChip, MoneyText, PhoneInput, BottomSheet, Toast via `useToast()`); screen chrome in `src/components/shell` (PageHeader, BottomTabs, EmptyState, LanguageSwitch). Use them rather than new one-offs. `/more/design` shows them all on a real phone.
+- Signed-in screens live under `src/app/(app)/` and get the bottom tabs from its layout. The public order page will live outside that group.
+- Screenshot baselines (`tests/e2e/__screenshots__`) are recorded on Linux; refresh with `pnpm test:e2e --update-snapshots=changed` after an intended visual change.
 - Import table types from `@/lib/supabase/types` (`Row<"products">`, `ViewRow<"customer_balances">`, `Enum<"order_status">`).

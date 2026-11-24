@@ -3,14 +3,84 @@
     "name": "SokoFresh",
     "tagline": "Bidhaa, oda na malipo mahali pamoja."
   },
-  "Home": {
-    "welcome": "Karibu",
-    "intro": "Pokea oda, sasisha bidhaa zako na uone nani amelipa — kwa simu yako.",
-    "comingSoon": "Programu inajengwa. Rudi hivi karibuni."
+  "Nav": {
+    "label": "Menyu kuu",
+    "orders": "Oda",
+    "stock": "Bidhaa",
+    "payments": "Malipo",
+    "more": "Zaidi"
   },
   "Language": {
     "label": "Lugha",
     "en": "English",
-    "sw": "Kiswahili"
+    "sw": "Kiswahili",
+    "enShort": "EN",
+    "swShort": "SW"
+  },
+  "Common": {
+    "undo": "Rudisha",
+    "close": "Funga"
+  },
+  "Phone": {
+    "label": "Nambari ya simu",
+    "hint": "Kwa mfano 0712 345 678",
+    "invalid": "Angalia nambari. Inapaswa kuwa kama 0712 345 678."
+  },
+  "OrderStatus": {
+    "new": "Mpya",
+    "confirmed": "Imethibitishwa",
+    "packed": "Imepakiwa",
+    "out_for_delivery": "Iko njiani",
+    "delivered": "Imefikishwa",
+    "cancelled": "Imeghairiwa"
+  },
+  "PaymentStatus": {
+    "unpaid": "Haijalipwa",
+    "part_paid": "Imelipwa nusu",
+    "paid": "Imelipwa",
+    "overdue": "Imechelewa"
+  },
+  "StockStatus": {
+    "in_stock": "Ipo",
+    "low": "Chache",
+    "out": "Imeisha"
+  },
+  "Orders": {
+    "emptyTitle": "Bado hakuna oda",
+    "emptyBody": "Oda kutoka kiungo chako, simu, WhatsApp na wateja wanaofika dukani zitaonekana hapa."
+  },
+  "Stock": {
+    "emptyTitle": "Bado hakuna bidhaa",
+    "emptyBody": "Ongeza unachouza na bei yake. Wateja wataiona kwenye kiungo chako cha oda."
+  },
+  "Payments": {
+    "emptyTitle": "Bado hakuna malipo",
+    "emptyBody": "Rekodi malipo ya pesa taslimu, M-Pesa na benki hapa uone nani amelipa na nani anadaiwa."
+  },
+  "More": {
+    "design": "Muonekano",
+    "designHint": "Ona kila kitufe na maandishi kwenye simu hii"
+  },
+  "Design": {
+    "intro": "Mifano ya skrini yenye data ya kubuni, kuangalia jinsi vitu vinavyoonekana kwenye simu hii.",
+    "buttons": "Vitufe",
+    "newOrder": "Oda mpya",
+    "call": "Piga simu",
+    "skip": "Ruka",
+    "orderRows": "Orodha ya oda",
+    "exampleOrderLine": "Oda #{number} · bidhaa {items}",
+    "markPacked": "Weka imepakiwa",
+    "toastPacked": "Oda imewekwa imepakiwa",
+    "orderChips": "Hali ya oda",
+    "paymentChips": "Hali ya malipo",
+    "stockChips": "Hali ya bidhaa",
+    "money": "Pesa",
+    "totalOwed": "Jumla unayodai",
+    "phone": "Nambari ya simu",
+    "sheet": "Dirisha la chini",
+    "openSheet": "Fungua dirisha",
+    "sheetTitle": "Chagua mteja",
+    "sheetBody": "Madirisha haya hufunguka kutoka chini kwa chaguo za haraka. Gusa nje au X kufunga.",
+    "done": "Sawa"
   }
 }

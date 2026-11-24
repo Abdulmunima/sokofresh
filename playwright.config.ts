@@ -12,8 +12,20 @@ export default defineConfig({
     baseURL: `http://localhost:${PORT}`,
     trace: "off",
   },
-  // Design target: a cheap Android phone.
-  projects: [{ name: "pixel-5", use: { ...devices["Pixel 5"] } }],
+  // Design target: a cheap Android phone. 360px wide is the smallest screen we design for.
+  projects: [
+    { name: "pixel-5", use: { ...devices["Pixel 5"] } },
+    {
+      name: "android-360",
+      use: {
+        ...devices["Pixel 5"],
+        viewport: { width: 360, height: 740 },
+      },
+    },
+  ],
+  // Screenshots differ between operating systems (fonts), so baselines are Linux-only (CI).
+  snapshotPathTemplate: "{testDir}/__screenshots__/{testFilePath}/{arg}-{projectName}{ext}",
+  expect: { toHaveScreenshot: { maxDiffPixelRatio: 0.01 } },
   webServer: {
     command: `pnpm build && pnpm start -p ${PORT}`,
     url: `http://localhost:${PORT}`,
