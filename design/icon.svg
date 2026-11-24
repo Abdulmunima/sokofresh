@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- SokoFresh mark: a market crate with a leaf. Full-bleed so it also works as a maskable icon. -->
+  <rect width="512" height="512" fill="#1f7a3a"/>
+  <g fill="none" stroke="#ffffff" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M136 250 h240 l-26 150 a20 20 0 0 1 -20 16 H182 a20 20 0 0 1 -20 -16 Z"/>
+    <path d="M190 300 v66 M256 300 v66 M322 300 v66"/>
+  </g>
+  <path d="M256 236 C 240 170, 278 112, 352 100 C 360 172, 322 226, 256 236 Z" fill="#b8e986"/>
+  <path d="M256 236 C 272 196, 296 160, 330 130" fill="none" stroke="#1f7a3a" stroke-width="10" stroke-linecap="round"/>
+</svg>

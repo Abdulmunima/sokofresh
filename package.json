@@ -17,11 +17,13 @@
     "db:types": "scripts/gen-types.sh"
   },
   "dependencies": {
+    "@serwist/turbopack": "^9.5.15",
     "lucide-react": "^1.78.0",
     "next": "16.4.6",
     "next-intl": "4.16.0",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "serwist": "^9.5.15"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",
@@ -30,6 +32,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^6.3.0",
+    "esbuild": "^0.28.2",
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
     "prettier": "^3.10.1",

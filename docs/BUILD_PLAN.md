@@ -12,13 +12,13 @@ Work top to bottom. Each task is sized for one Claude Code session. Tick the box
   *Done when:* `supabase db reset` runs clean and the types file exists.
 - [x] **0.3 App shell.** Mobile layout with four bottom tabs (Orders, Stock, Payments, More), language toggle, big-button UI kit (Button, ListItem, StatusChip, MoneyText, PhoneInput, BottomSheet, Toast with Undo).
   *Done when:* shell renders at 360px; Playwright screenshot test.
-- [ ] **0.4 PWA + offline basics.** Installable manifest, icons, service worker caching the shell and last-viewed Orders/Stock data.
+- [x] **0.4 PWA + offline basics.** Installable manifest, icons, service worker caching the shell and last-viewed Orders/Stock data.
   *Done when:* Lighthouse PWA installable; app opens offline showing cached data.
 - [ ] **0.5 Shared helpers.** ~~`normalisePhoneKE`~~, ~~`formatKES`~~ (done early in 0.3, `src/lib/phone.ts`, `src/lib/money.ts`), `waLink(phone, text)`, Nairobi date helpers, with unit tests.
 
 ## M1 — Accounts (F1)
 
-- [ ] **1.1 Phone OTP login** with Supabase Auth (SMS provider configurable; use test OTPs locally). Profile created on first login.
+- [ ] **1.1 Phone OTP login** with Supabase Auth (SMS provider configurable; use test OTPs locally). Profile created on first login. On sign-out, clear the service worker's saved pages (`caches`), because phones are shared. Call `claim_staff_invites()` after login.
 - [ ] **1.2 Onboarding wizard** (≤ 5 skippable steps): business name → business type → payment methods → delivery days → first 5 products. Creates supplier, membership (owner), trial subscription.
 - [ ] **1.3 Staff management.** Owner adds staff by phone + role; staff get access on first login with that phone. Role checks in UI and server actions.
   *Done when:* e2e: owner signs up, adds a staff member, staff logs in and sees Orders but not money totals.

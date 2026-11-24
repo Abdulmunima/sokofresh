@@ -3,6 +3,7 @@
 import { ClipboardList, Ellipsis, Package, Wallet, type LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useOffline } from "next/offline";
 import { useTranslations } from "next-intl";
 import { cx } from "@/lib/cx";
 
@@ -17,6 +18,7 @@ export const TABS = [
 export function BottomTabs() {
   const t = useTranslations("Nav");
   const pathname = usePathname();
+  const offline = useOffline();
 
   return (
     <nav
@@ -31,6 +33,13 @@ export function BottomTabs() {
               <Link
                 href={href}
                 aria-current={active ? "page" : undefined}
+                onClick={(e) => {
+                  // Offline, a full page load lets the service worker show the saved copy.
+                  if (offline || !navigator.onLine) {
+                    e.preventDefault();
+                    window.location.assign(href);
+                  }
+                }}
                 className={cx(
                   "flex min-h-16 flex-col items-center justify-center gap-0.5 text-sm font-medium",
                   active ? "text-brand" : "text-muted",

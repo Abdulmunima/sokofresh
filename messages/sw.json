@@ -82,5 +82,13 @@
     "sheetTitle": "Chagua mteja",
     "sheetBody": "Madirisha haya hufunguka kutoka chini kwa chaguo za haraka. Gusa nje au X kufunga.",
     "done": "Sawa"
+  },
+  "Offline": {
+    "title": "Huna mtandao",
+    "body": "Ukurasa huu bado haujahifadhiwa kwenye simu hii. Unganisha intaneti ujaribu tena.",
+    "retry": "Jaribu tena",
+    "banner": "Huna mtandao.",
+    "savedAt": "Unaona kilichohifadhiwa saa {time}. Mabadiliko yanahitaji mtandao.",
+    "savedUnknown": "Unaona nakala ya mwisho iliyohifadhiwa. Mabadiliko yanahitaji mtandao."
   }
 }

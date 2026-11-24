@@ -82,5 +82,13 @@
     "sheetTitle": "Choose a customer",
     "sheetBody": "Sheets slide up from the bottom for quick choices. Tap outside or the X to close.",
     "done": "Done"
+  },
+  "Offline": {
+    "title": "You're offline",
+    "body": "This page hasn't been saved on this phone yet. Connect to the internet and try again.",
+    "retry": "Try again",
+    "banner": "You're offline.",
+    "savedAt": "Showing what was saved at {time}. Changes need a connection.",
+    "savedUnknown": "Showing the last saved copy. Changes need a connection."
   }
 }
