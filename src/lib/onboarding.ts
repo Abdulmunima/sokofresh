@@ -1,5 +1,6 @@
 import { z } from "zod";
 import type { Enum, Insert } from "@/lib/supabase/types";
+import { parsePriceKES } from "@/lib/money";
 import { normalisePhoneKE } from "@/lib/phone";
 
 // ── Step 1: business name → order link ─────────────────────────────────
@@ -199,18 +200,16 @@ export function productRows(
   const errors: FieldErrors = {};
   drafts.slice(0, 5).forEach((d, i) => {
     const name = d.name.trim();
-    const priceText = d.price.replace(/[,\s]/g, "").replace(/^ksh/i, "");
-    if (!name && !priceText) return; // empty row
+    if (!name && !d.price.trim()) return; // empty row
     if (name.length < 2 || name.length > 60) errors[`${i}.name`] = "required";
-    const price = Number(priceText);
-    if (!priceText || !Number.isFinite(price) || price < 0 || price > 10_000_000)
-      errors[`${i}.price`] = "price_invalid";
+    const price = parsePriceKES(d.price);
+    if (price === null) errors[`${i}.price`] = "price_invalid";
     const unit = (UNITS as readonly string[]).includes(d.unit) ? d.unit : "piece";
     if (!errors[`${i}.name`] && !errors[`${i}.price`]) {
       rows.push({
         name,
         unit,
-        price_kes: Math.round(price * 100) / 100,
+        price_kes: price as number,
         sort: rows.length + 1,
         stock_status: "in_stock" satisfies Enum<"stock_status">,
       });

@@ -51,7 +51,31 @@
   },
   "Stock": {
     "emptyTitle": "Bado hakuna bidhaa",
-    "emptyBody": "Ongeza unachouza na bei yake. Wateja wataiona kwenye kiungo chako cha oda."
+    "emptyBody": "Ongeza unachouza na bei yake. Wateja wataiona kwenye kiungo chako cha oda.",
+    "search": "Tafuta bidhaa",
+    "counts": "Bidhaa {total} · {low} chache · {out} zimeisha",
+    "waitingToSend": "{count} zinasubiri kutumwa",
+    "noMatch": "Hakuna kinacholingana na \"{query}\".",
+    "otherCategory": "Nyingine",
+    "editPrice": "Badilisha bei ya {name}",
+    "changeStatus": "{name}: {status}. Gusa kubadilisha.",
+    "status": {
+      "in_stock": "Ipo",
+      "low": "Chache",
+      "out": "Imeisha"
+    },
+    "statusChanged": "{name}: {status}",
+    "priceChanged": "Bei mpya ya {name} imehifadhiwa",
+    "undone": "Badiliko limerudishwa",
+    "savedOffline": "Imehifadhiwa kwenye simu hii. Itatumwa ukirudi mtandaoni.",
+    "synced": "{count, plural, one {Badiliko # limetumwa} other {Mabadiliko # yametumwa}}",
+    "notSentYet": "Bado haijatumwa",
+    "priceLabel": "Bei {unit}",
+    "savePrice": "Hifadhi bei",
+    "errors": {
+      "failed": "Haikuhifadhiwa. Jaribu tena.",
+      "price": "Andika bei kama 2500 au 2,500."
+    }
   },
   "Payments": {
     "emptyTitle": "Bado hakuna malipo",

@@ -20,3 +20,18 @@ export function formatKES(amount: number | string | null | undefined): string {
   const rounded = Math.round(n * 100) / 100;
   return Number.isInteger(rounded) ? whole.format(rounded) : cents.format(rounded);
 }
+
+/**
+ * Read a price typed by a person: "2,500", "Ksh 30", "1500.50", " 400 ".
+ * Returns KES rounded to cents, or null if it is not a sensible price.
+ */
+export function parsePriceKES(text: string | null | undefined): number | null {
+  const cleaned = (text ?? "")
+    .trim()
+    .replace(/^(ksh|kes)\.?\s*/i, "")
+    .replace(/[,\s]/g, "");
+  if (!/^\d+(\.\d{1,2})?$/.test(cleaned)) return null;
+  const value = Number(cleaned);
+  if (!Number.isFinite(value) || value > 10_000_000) return null;
+  return Math.round(value * 100) / 100;
+}

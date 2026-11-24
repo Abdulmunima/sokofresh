@@ -6,6 +6,7 @@ import { useEffect, useRef, useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { PhoneInput } from "@/components/ui/phone-input";
 import { formatPhoneKE } from "@/lib/phone";
+import { clearSavedPages } from "@/lib/saved-pages";
 import { sendCode, verifyCode } from "./actions";
 
 const RESEND_SECONDS = 30;
@@ -13,6 +14,14 @@ const RESEND_SECONDS = 30;
 /** Two steps on one screen: phone number → 6-digit code from WhatsApp. */
 export function LoginForm({ next }: { next: string | null }) {
   const t = useTranslations("Login");
+
+  // Anyone on this screen is logged out: make sure no saved business pages remain on the
+  // phone, including one the offline helper was still saving when the last person left.
+  useEffect(() => {
+    void clearSavedPages();
+    const later = setTimeout(() => void clearSavedPages(), 3000);
+    return () => clearTimeout(later);
+  }, []);
   const [phone, setPhone] = useState<string | null>(null); // E.164 once the code is sent
   const [typed, setTyped] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);

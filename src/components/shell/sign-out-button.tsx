@@ -5,13 +5,7 @@ import { useTranslations } from "next-intl";
 import { useTransition } from "react";
 import { signOut } from "@/app/login/actions";
 import { Button } from "@/components/ui/button";
-
-/** Removes every page saved for offline use, so the next person on a shared phone sees nothing. */
-export async function clearSavedPages() {
-  if (typeof caches === "undefined") return;
-  const names = await caches.keys();
-  await Promise.all(names.map((name) => caches.delete(name)));
-}
+import { clearSavedPages } from "@/lib/saved-pages";
 
 export function SignOutButton() {
   const t = useTranslations("Account");

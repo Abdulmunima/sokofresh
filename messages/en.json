@@ -51,7 +51,31 @@
   },
   "Stock": {
     "emptyTitle": "No products yet",
-    "emptyBody": "Add what you sell and its price. Customers will see it on your order link."
+    "emptyBody": "Add what you sell and its price. Customers will see it on your order link.",
+    "search": "Search products",
+    "counts": "{total} products · {low} low · {out} out",
+    "waitingToSend": "{count} waiting to send",
+    "noMatch": "Nothing matches \"{query}\".",
+    "otherCategory": "Other",
+    "editPrice": "Change price of {name}",
+    "changeStatus": "{name}: {status}. Tap to change.",
+    "status": {
+      "in_stock": "In stock",
+      "low": "Low",
+      "out": "Out"
+    },
+    "statusChanged": "{name}: {status}",
+    "priceChanged": "New price for {name} saved",
+    "undone": "Change undone",
+    "savedOffline": "Saved on this phone. It will be sent when you're back online.",
+    "synced": "{count, plural, one {# change} other {# changes}} sent",
+    "notSentYet": "Not sent yet",
+    "priceLabel": "Price {unit}",
+    "savePrice": "Save price",
+    "errors": {
+      "failed": "Could not save. Try again.",
+      "price": "Type a price like 2500 or 2,500."
+    }
   },
   "Payments": {
     "emptyTitle": "No payments yet",

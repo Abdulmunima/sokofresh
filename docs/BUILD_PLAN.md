@@ -25,7 +25,7 @@ Work top to bottom. Each task is sized for one Claude Code session. Tick the box
 
 ## M2 — Stock (F2)
 
-- [ ] **2.1 Product list** grouped by category, search, one-tap In stock / Low / Out toggle, inline price edit (≤ 2 taps).
+- [x] **2.1 Product list** grouped by category, search, one-tap In stock / Low / Out toggle, inline price edit (≤ 2 taps).
 - [ ] **2.2 Add/edit product** with unit picker, price, optional quantity and photo (compressed client-side, Supabase Storage).
 - [ ] **2.3 Bulk add by pasting a list** ("Tomatoes, crate, 2500" per line) with a review screen. (Photo-of-price-list import is P1.)
 

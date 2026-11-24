@@ -69,14 +69,16 @@ test.describe("signed out", () => {
     });
     await page.getByRole("button", { name: "Log out" }).click();
     await expect(page).toHaveURL(/\/login$/);
-    // The private page is gone from every cache (the login page itself may be saved again).
-    const stillSaved = await page.evaluate(async () => {
-      for (const name of await caches.keys()) {
-        if (await (await caches.open(name)).match("/welcome")) return true;
-      }
-      return false;
-    });
-    expect(stillSaved).toBe(false);
+    // The private page is gone from every cache (the login page itself may be saved again),
+    // including a copy the offline helper was still saving at the moment of logging out.
+    const stillSaved = () =>
+      page.evaluate(async () => {
+        for (const name of await caches.keys()) {
+          if (await (await caches.open(name)).match("/welcome", { ignoreVary: true })) return true;
+        }
+        return false;
+      });
+    await expect.poll(stillSaved, { timeout: 6000 }).toBe(false);
 
     await page.goto("/orders");
     await expect(page).toHaveURL(/\/login/);
