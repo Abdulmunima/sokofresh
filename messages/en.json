@@ -59,7 +59,9 @@
   },
   "More": {
     "design": "Design preview",
-    "designHint": "See every button and label on this phone"
+    "designHint": "See every button and label on this phone",
+    "staff": "Staff",
+    "staffHint": "Add people and choose what they can do"
   },
   "Design": {
     "intro": "Example screens with made-up data, to check how things look on this phone.",
@@ -229,6 +231,43 @@
       "product_name": "Type the product name.",
       "price_invalid": "Type the price in Ksh, e.g. 2500.",
       "plan_limit": "Your plan doesn't allow more products."
+    }
+  },
+  "Staff": {
+    "title": "Staff",
+    "team": "Team ({count})",
+    "you": "you",
+    "waiting": "Waiting for first login",
+    "notLoggedInYet": "not logged in yet",
+    "add": "Add a person",
+    "addButton": "Add",
+    "adding": "Adding…",
+    "name": "Name",
+    "role": "Role",
+    "done": "Done",
+    "roleHints": {
+      "staff": "Orders, stock and recording payments. Does not see money totals.",
+      "manager": "Everything except billing and staff."
+    },
+    "addedResult": {
+      "added": "{name} has been added. They can log in now.",
+      "invited": "{name} is invited. They join when they log in with this number.",
+      "already_member": "{name} is already in your team."
+    },
+    "sendWhatsApp": "Tell them on WhatsApp",
+    "inviteHint": "They join your business the first time they log in with this number.",
+    "cancelInvite": "Cancel invite",
+    "remove": "Remove from business",
+    "removed": "{name} removed",
+    "inviteCancelled": "Invite for {name} cancelled",
+    "roleChanged": "Role changed to {role}",
+    "onlyOwner": "Only the owner can add or remove people.",
+    "inviteMessage": "Hi {name}, {business} has added you on SokoFresh. Open {url} and log in with your number {phone}. You will get a code on WhatsApp.",
+    "errors": {
+      "invalid_phone": "Check the number. It should look like 0712 345 678.",
+      "plan_limit": "Your plan has no room for more people. Upgrade under More → Plan.",
+      "not_allowed": "Only the owner can do this.",
+      "failed": "Something went wrong. Try again."
     }
   }
 }

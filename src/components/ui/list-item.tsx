@@ -67,13 +67,15 @@ export function ListItem({
 
 /** A list of ListItems with dividers. */
 export function List({ children, className }: { children: ReactNode; className?: string }) {
+  // Skip false/null children so `{cond && <ListItem …/>}` leaves no empty row.
+  const items = (Array.isArray(children) ? children : [children]).filter(
+    (child) => child !== false && child !== null && child !== undefined,
+  );
   return (
     <ul className={cx("divide-border divide-y", className)}>
-      {Array.isArray(children) ? (
-        children.map((child, i) => <li key={i}>{child}</li>)
-      ) : (
-        <li>{children}</li>
-      )}
+      {items.map((child, i) => (
+        <li key={i}>{child}</li>
+      ))}
     </ul>
   );
 }

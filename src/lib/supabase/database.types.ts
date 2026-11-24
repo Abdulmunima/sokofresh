@@ -814,6 +814,7 @@ export type Database = {
         Row: {
           created_at: string;
           id: string;
+          name: string | null;
           phone: string;
           role: Database["public"]["Enums"]["member_role"];
           supplier_id: string;
@@ -822,6 +823,7 @@ export type Database = {
         Insert: {
           created_at?: string;
           id?: string;
+          name?: string | null;
           phone: string;
           role?: Database["public"]["Enums"]["member_role"];
           supplier_id: string;
@@ -829,6 +831,7 @@ export type Database = {
         Update: {
           created_at?: string;
           id?: string;
+          name?: string | null;
           phone?: string;
           role?: Database["public"]["Enums"]["member_role"];
           supplier_id?: string;
@@ -1047,6 +1050,15 @@ export type Database = {
       };
     };
     Functions: {
+      add_team_member: {
+        Args: {
+          p_name?: string;
+          p_phone: string;
+          p_role: Database["public"]["Enums"]["member_role"];
+          p_supplier_id: string;
+        };
+        Returns: string;
+      };
       anonymise_customer: { Args: { p_customer_id: string }; Returns: undefined };
       can_edit_payment: { Args: { p_payment_id: string }; Returns: boolean };
       can_manage_money: { Args: { sid: string }; Returns: boolean };
@@ -1067,6 +1079,16 @@ export type Database = {
       refresh_order_payment_status: { Args: { p_order_id: string }; Returns: undefined };
       refresh_order_totals: { Args: { p_order_id: string }; Returns: undefined };
       send_login_code_dev: { Args: { event: Json }; Returns: Json };
+      team_members: {
+        Args: { p_supplier_id: string };
+        Returns: {
+          full_name: string;
+          joined_at: string;
+          phone: string;
+          role: Database["public"]["Enums"]["member_role"];
+          user_id: string;
+        }[];
+      };
       verified_phone: { Args: { p_user: string }; Returns: string };
     };
     Enums: {

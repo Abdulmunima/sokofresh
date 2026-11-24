@@ -59,7 +59,9 @@
   },
   "More": {
     "design": "Muonekano",
-    "designHint": "Ona kila kitufe na maandishi kwenye simu hii"
+    "designHint": "Ona kila kitufe na maandishi kwenye simu hii",
+    "staff": "Wafanyakazi",
+    "staffHint": "Ongeza watu na uchague wanachoweza kufanya"
   },
   "Design": {
     "intro": "Mifano ya skrini yenye data ya kubuni, kuangalia jinsi vitu vinavyoonekana kwenye simu hii.",
@@ -223,6 +225,43 @@
       "product_name": "Andika jina la bidhaa.",
       "price_invalid": "Andika bei kwa Ksh, k.m. 2500.",
       "plan_limit": "Mpango wako hauruhusu bidhaa zaidi."
+    }
+  },
+  "Staff": {
+    "title": "Wafanyakazi",
+    "team": "Timu ({count})",
+    "you": "wewe",
+    "waiting": "Wanasubiri kuingia mara ya kwanza",
+    "notLoggedInYet": "bado hajaingia",
+    "add": "Ongeza mtu",
+    "addButton": "Ongeza",
+    "adding": "Inaongeza…",
+    "name": "Jina",
+    "role": "Kazi",
+    "done": "Sawa",
+    "roleHints": {
+      "staff": "Oda, bidhaa na kurekodi malipo. Haoni jumla za pesa.",
+      "manager": "Kila kitu isipokuwa malipo ya mpango na wafanyakazi."
+    },
+    "addedResult": {
+      "added": "{name} ameongezwa. Anaweza kuingia sasa.",
+      "invited": "{name} amealikwa. Ataingia kwenye biashara akiingia kwa nambari hii.",
+      "already_member": "{name} tayari yuko kwenye timu yako."
+    },
+    "sendWhatsApp": "Mjulishe kwa WhatsApp",
+    "inviteHint": "Ataingia kwenye biashara yako mara ya kwanza akiingia kwa nambari hii.",
+    "cancelInvite": "Futa mwaliko",
+    "remove": "Mtoe kwenye biashara",
+    "removed": "{name} ametolewa",
+    "inviteCancelled": "Mwaliko wa {name} umefutwa",
+    "roleChanged": "Kazi imebadilishwa kuwa {role}",
+    "onlyOwner": "Mmiliki pekee ndiye anaweza kuongeza au kutoa watu.",
+    "inviteMessage": "Habari {name}, {business} imekuongeza kwenye SokoFresh. Fungua {url} na uingie kwa nambari yako {phone}. Utapata nambari ya siri kwa WhatsApp.",
+    "errors": {
+      "invalid_phone": "Angalia nambari. Inapaswa kuwa kama 0712 345 678.",
+      "plan_limit": "Mpango wako hauna nafasi ya watu zaidi. Panda daraja kwenye Zaidi → Mpango.",
+      "not_allowed": "Mmiliki pekee ndiye anaweza kufanya hivi.",
+      "failed": "Kuna tatizo. Jaribu tena."
     }
   }
 }

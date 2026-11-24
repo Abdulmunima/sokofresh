@@ -13,6 +13,8 @@ export const DEMO = {
   /** Fresh owners for the set-up wizard; their businesses are deleted before each run. */
   wizard: { phone: "0712000101" },
   skipper: { phone: "0712000102" },
+  /** Added as staff by the owner in staff.spec.ts. */
+  newStaff: { phone: "0712000103", name: "Baraka Test" },
 } as const;
 /** Fixed code for numbers set up as Supabase test numbers (local config.toml). */
 export const TEST_CODE = "123456";

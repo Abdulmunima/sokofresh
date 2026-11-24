@@ -1,10 +1,11 @@
-import { Languages, Palette, UserRound } from "lucide-react";
+import { Languages, Palette, UserRound, Users } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { LanguageSwitch } from "@/components/shell/language-switch";
 import { PageHeader } from "@/components/shell/page-header";
 import { List, ListItem } from "@/components/ui/list-item";
 import { SignOutButton } from "@/components/shell/sign-out-button";
 import { requireMember } from "@/lib/auth/session";
+import { canViewTeam } from "@/lib/team";
 import { formatPhoneKE } from "@/lib/phone";
 
 export async function generateMetadata() {
@@ -33,6 +34,14 @@ export default async function MorePage() {
         <LanguageSwitch />
       </section>
       <List className="border-border border-t">
+        {canViewTeam(me.role) && (
+          <ListItem
+            href="/more/staff"
+            leading={<Users />}
+            title={t("More.staff")}
+            subtitle={t("More.staffHint")}
+          />
+        )}
         <ListItem
           href="/more/design"
           leading={<Palette />}
