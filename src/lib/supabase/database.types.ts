@@ -238,6 +238,22 @@ export type Database = {
           },
         ];
       };
+      dev_flags: {
+        Row: {
+          created_at: string;
+          name: string;
+        };
+        ComputedFields: never;
+        Insert: {
+          created_at?: string;
+          name: string;
+        };
+        Update: {
+          created_at?: string;
+          name?: string;
+        };
+        Relationships: [];
+      };
       login_code_outbox: {
         Row: {
           code: string;
@@ -1035,6 +1051,7 @@ export type Database = {
       can_edit_payment: { Args: { p_payment_id: string }; Returns: boolean };
       can_manage_money: { Args: { sid: string }; Returns: boolean };
       claim_staff_invites: { Args: Record<PropertyKey, never>; Returns: number };
+      dev_latest_login_code: { Args: { p_phone: string }; Returns: string };
       get_public_catalog: { Args: { p_slug: string }; Returns: Json };
       has_role: {
         Args: { roles: Database["public"]["Enums"]["member_role"][]; sid: string };

@@ -107,8 +107,7 @@
       "invalid_phone": "Check the number. It should look like 0712 345 678.",
       "too_many": "Too many tries. Wait a minute and try again.",
       "send_failed": "We couldn't send the code. Check the number and try again.",
-      "invalid_code": "That code is not right. Check WhatsApp and try again.",
-      "expired": "That code has expired. Tap \"Send again\".",
+      "invalid_code": "That code is wrong or has expired. Check WhatsApp, or tap \"Send again\".",
       "failed": "Something went wrong. Try again."
     }
   },

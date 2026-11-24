@@ -18,7 +18,7 @@ Work top to bottom. Each task is sized for one Claude Code session. Tick the box
 
 ## M1 — Accounts (F1)
 
-- [ ] **1.1 Phone OTP login** with Supabase Auth (SMS provider configurable; use test OTPs locally). Profile created on first login. On sign-out, clear the service worker's saved pages (`caches`), because phones are shared. Call `claim_staff_invites()` after login.
+- [x] **1.1 Phone OTP login** (codes sent on WhatsApp instead of SMS, per product decision) with Supabase Auth (SMS provider configurable; use test OTPs locally). Profile created on first login. On sign-out, clear the service worker's saved pages (`caches`), because phones are shared. Call `claim_staff_invites()` after login.
 - [ ] **1.2 Onboarding wizard** (≤ 5 skippable steps): business name → business type → payment methods → delivery days → first 5 products. Creates supplier, membership (owner), trial subscription.
 - [ ] **1.3 Staff management.** Owner adds staff by phone + role; staff get access on first login with that phone. Role checks in UI and server actions.
   *Done when:* e2e: owner signs up, adds a staff member, staff logs in and sees Orders but not money totals.

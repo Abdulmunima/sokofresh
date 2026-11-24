@@ -107,8 +107,7 @@
       "invalid_phone": "Angalia nambari. Inapaswa kuwa kama 0712 345 678.",
       "too_many": "Umejaribu mara nyingi. Subiri dakika moja ujaribu tena.",
       "send_failed": "Hatukuweza kutuma nambari. Angalia nambari ujaribu tena.",
-      "invalid_code": "Nambari si sahihi. Angalia WhatsApp ujaribu tena.",
-      "expired": "Nambari imeisha muda. Gusa \"Tuma tena\".",
+      "invalid_code": "Nambari si sahihi au imeisha muda. Angalia WhatsApp, au gusa \"Tuma tena\".",
       "failed": "Kuna tatizo. Jaribu tena."
     }
   },

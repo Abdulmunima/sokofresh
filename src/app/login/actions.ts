@@ -46,7 +46,7 @@ export async function verifyCode(
   const { error } = await supabase.auth.verifyOtp({ phone: e164, token, type: "sms" });
   if (error) {
     if (error.status === 429) return { ok: false, error: "too_many" };
-    if (error.code === "otp_expired") return { ok: false, error: "expired" };
+    // Supabase answers "otp_expired" for wrong and for expired codes alike: one message covers both.
     return { ok: false, error: error.status && error.status < 500 ? "invalid_code" : "failed" };
   }
 
@@ -60,5 +60,6 @@ export async function verifyCode(
 /** Sign out on the server. The client then clears pages saved for offline use. */
 export async function signOut() {
   const supabase = await createClient();
-  await supabase.auth.signOut();
+  // "local": end this phone's session only, not the same person's session on other phones.
+  await supabase.auth.signOut({ scope: "local" });
 }
