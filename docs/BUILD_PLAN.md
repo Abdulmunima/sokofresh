@@ -14,7 +14,7 @@ Work top to bottom. Each task is sized for one Claude Code session. Tick the box
   *Done when:* shell renders at 360px; Playwright screenshot test.
 - [x] **0.4 PWA + offline basics.** Installable manifest, icons, service worker caching the shell and last-viewed Orders/Stock data.
   *Done when:* Lighthouse PWA installable; app opens offline showing cached data.
-- [ ] **0.5 Shared helpers.** ~~`normalisePhoneKE`~~, ~~`formatKES`~~ (done early in 0.3, `src/lib/phone.ts`, `src/lib/money.ts`), `waLink(phone, text)`, Nairobi date helpers, with unit tests.
+- [x] **0.5 Shared helpers.** `normalisePhoneKE` (`src/lib/phone.ts`), `formatKES` (`src/lib/money.ts`), `waLink(phone, text)` (`src/lib/whatsapp.ts`), Nairobi date helpers (`src/lib/nairobi.ts`), next delivery slots and cut-offs (`src/lib/delivery.ts`), with unit tests.
 
 ## M1 — Accounts (F1)
 
