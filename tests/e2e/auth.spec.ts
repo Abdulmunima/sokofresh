@@ -18,6 +18,17 @@ test.describe("signed out", () => {
     await expect(page.getByText("Manager · Mama Mboga Wholesale")).toBeVisible();
   });
 
+  test("the test site shows the code for demo numbers, and one tap logs in", async ({ page }) => {
+    await page.goto("/login");
+    await page.getByLabel("Phone number").fill(DEMO.testCodeUser.phone);
+    await page.getByRole("button", { name: "Send code on WhatsApp" }).click();
+    await expect(page.getByText("Test site: the code for this demo number is")).toBeVisible({
+      timeout: 15_000,
+    });
+    await page.getByRole("button", { name: "Use it" }).click();
+    await expect(page).toHaveURL(/\/(welcome|orders)$/);
+  });
+
   test("a wrong phone number is explained before anything is sent", async ({ page }) => {
     await page.goto("/login");
     await page.getByLabel("Phone number").fill("0712");

@@ -4,7 +4,7 @@
  * images) stay, so the app still opens offline for the next person.
  */
 const DATA_CACHES = ["pages", "pages-rsc", "pages-rsc-prefetch", "others", "apis", "cross-origin"];
-const OUTBOX_KEY = "sokofresh:outbox:v1";
+const OUTBOX_KEYS = ["sokofresh:outbox:v1", "sokofresh:outbox-recent:v1"];
 
 export function isDataCache(name: string): boolean {
   return DATA_CACHES.includes(name);
@@ -16,7 +16,7 @@ export async function clearSavedPages(): Promise<void> {
     await Promise.all(names.filter(isDataCache).map((name) => caches.delete(name)));
   }
   try {
-    window.localStorage.removeItem(OUTBOX_KEY); // unsent changes belong to the person who left
+    for (const key of OUTBOX_KEYS) window.localStorage.removeItem(key); // they belong to the person who left
   } catch {
     // storage blocked: nothing saved there anyway
   }

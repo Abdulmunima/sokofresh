@@ -10,6 +10,8 @@ export const DEMO = {
   invited: { phone: "0712000004", role: "Staff" },
   /** A test number with no business, for the welcome screen. */
   newcomer: { phone: "0712000009" },
+  /** Logs in with the on-screen test code (test site only). */
+  testCodeUser: { phone: "0712000005" },
   /** Fresh owners for the set-up wizard; their businesses are deleted before each run. */
   wizard: { phone: "0712000101" },
   skipper: { phone: "0712000102" },

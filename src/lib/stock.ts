@@ -4,7 +4,8 @@ export type StockStatus = Enum<"stock_status">;
 export type StockProduct = Pick<
   Row<"products">,
   "id" | "name" | "name_sw" | "unit" | "price_kes" | "stock_status" | "category_id" | "sort"
->;
+> &
+  Partial<Pick<Row<"products">, "price_changed_at" | "stock_changed_at">>;
 export type StockCategory = Pick<Row<"categories">, "id" | "name" | "name_sw" | "sort">;
 
 const CYCLE: StockStatus[] = ["in_stock", "low", "out"];

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { applyOutbox, discard, enqueue, flushOutbox, readOutbox } from "./outbox";
+import { applyOutbox, discard, enqueue, flushOutbox, readOutbox, readRecent } from "./outbox";
 
 function memoryStorage() {
   const data = new Map<string, string>();
@@ -78,5 +78,36 @@ describe("outbox", () => {
       { id: "a", stock_status: "out", price_kes: 120, name: "A" },
       { id: "b", stock_status: "low", price_kes: 5, name: "B" },
     ]);
+  });
+
+  it("remembers what was just sent", async () => {
+    const s = memoryStorage();
+    enqueue(s, { kind: "price", productId: "a", value: 60 }, 1);
+    await flushOutbox(s, async () => "sent");
+    expect(readRecent(s).map((e) => e.value)).toEqual([60]);
+    expect(readRecent(s, Date.now() + 10 * 60_000)).toEqual([]); // forgotten after a few minutes
+  });
+
+  it("shows a just-sent change only if the server data is older than it", () => {
+    const at = Date.parse("2026-11-25T07:50:22Z");
+    const sent = [{ kind: "price" as const, productId: "a", value: 60, at }];
+    const older = [
+      {
+        id: "a",
+        stock_status: "in_stock",
+        price_kes: 80,
+        price_changed_at: "2026-11-25T07:50:20Z",
+      },
+    ];
+    const newer = [
+      {
+        id: "a",
+        stock_status: "in_stock",
+        price_kes: 90,
+        price_changed_at: "2026-11-25T07:55:00Z",
+      },
+    ];
+    expect(applyOutbox(older, [], sent)[0].price_kes).toBe(60); // page loaded mid-send
+    expect(applyOutbox(newer, [], sent)[0].price_kes).toBe(90); // someone changed it since
   });
 });

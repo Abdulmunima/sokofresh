@@ -14,6 +14,7 @@ import { useToast } from "@/components/ui/toast";
 import { parsePriceKES } from "@/lib/money";
 import {
   applyOutbox,
+  readRecent,
   discard,
   enqueue,
   flushOutbox,
@@ -52,14 +53,15 @@ export function StockScreen({
   // Local overrides (optimistic changes not yet confirmed by a fresh server render).
   const [overrides, setOverrides] = useState<Record<string, Partial<StockProduct>>>({});
   const [pending, setPending] = useState<OutboxEntry[]>([]);
+  const [recent, setRecent] = useState<OutboxEntry[]>([]);
   const [editing, setEditing] = useState<StockProduct | null>(null);
 
   const isOffline = useCallback(() => nextOffline || !navigator.onLine, [nextOffline]);
 
   // Server data → pending offline changes → this session's optimistic changes.
   const list = useMemo(
-    () => applyOutbox(products, pending).map((p) => ({ ...p, ...overrides[p.id] })),
-    [products, pending, overrides],
+    () => applyOutbox(products, pending, recent).map((p) => ({ ...p, ...overrides[p.id] })),
+    [products, pending, recent, overrides],
   );
   const groups = useMemo(() => groupProducts(list, categories, query), [list, categories, query]);
   const counts = stockCounts(list);
@@ -115,6 +117,7 @@ export function StockScreen({
           });
         }
         setPending(readOutbox(storage()));
+        setRecent(readRecent(storage()));
       }
       if (rejected.length) {
         // The server refused (e.g. product removed): show what the server has.
@@ -132,6 +135,7 @@ export function StockScreen({
     // Read what was saved on this phone earlier, then try to send it.
     // eslint-disable-next-line react-hooks/set-state-in-effect -- reading browser storage once on mount
     setPending(readOutbox(storage()));
+    setRecent(readRecent(storage()));
     void flush();
     const onOnline = () => void flush();
     window.addEventListener("online", onOnline);

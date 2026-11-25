@@ -8,6 +8,7 @@ import { PhoneInput } from "@/components/ui/phone-input";
 import { formatPhoneKE } from "@/lib/phone";
 import { clearSavedPages } from "@/lib/saved-pages";
 import { sendCode, verifyCode } from "./actions";
+import { TestCode } from "./test-code";
 
 const RESEND_SECONDS = 30;
 
@@ -98,6 +99,7 @@ function CodeStep({
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
   const [secondsLeft, setSecondsLeft] = useState(RESEND_SECONDS);
+  const [sentAt, setSentAt] = useState(0); // bumps on "Send again" so the test code refreshes
   const submitted = useRef("");
 
   useEffect(() => {
@@ -133,6 +135,14 @@ function CodeStep({
           b: (chunks) => <strong className="font-semibold whitespace-nowrap">{chunks}</strong>,
         })}
       </p>
+      <TestCode
+        phone={phone}
+        sentAt={sentAt}
+        onUse={(c) => {
+          setCode(c);
+          verify(c);
+        }}
+      />
       <div className="flex flex-col gap-1">
         <label htmlFor="code" className="text-base font-semibold">
           {t("codeLabel")}
@@ -174,6 +184,7 @@ function CodeStep({
           onClick={() => {
             onResend();
             setSecondsLeft(RESEND_SECONDS);
+            setSentAt((n) => n + 1);
           }}
         >
           {secondsLeft > 0 ? t("resendIn", { seconds: secondsLeft }) : t("resend")}

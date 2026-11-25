@@ -15,7 +15,9 @@ export default async function StockPage() {
   const [products, categories] = await Promise.all([
     supabase
       .from("products")
-      .select("id, name, name_sw, unit, price_kes, stock_status, category_id, sort")
+      .select(
+        "id, name, name_sw, unit, price_kes, stock_status, category_id, sort, price_changed_at, stock_changed_at",
+      )
       .eq("supplier_id", me.supplierId)
       .eq("is_active", true),
     supabase.from("categories").select("id, name, name_sw, sort").eq("supplier_id", me.supplierId),

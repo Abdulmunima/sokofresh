@@ -23,6 +23,10 @@ select set_config('role', 'anon', true);
 select pg_temp.eq('dev project: tests can read the latest code', public.dev_latest_login_code('+254712000009'), '271828');
 select pg_temp.eq('nothing for other numbers', public.dev_latest_login_code('+254700000000'), null::text);
 select set_config('role', 'postgres', true);
+insert into login_code_outbox (phone, code) values ('+254722123456', '999999');
+select set_config('role', 'anon', true);
+select pg_temp.eq('a real number''s code is never revealed', public.dev_latest_login_code('+254722123456'), null::text);
+select set_config('role', 'postgres', true);
 
 select pg_temp.eq('the flag table is not readable through the API',
   has_table_privilege('anon', 'public.dev_flags', 'select'), false);

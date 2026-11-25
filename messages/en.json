@@ -128,7 +128,9 @@
       "send_failed": "We couldn't send the code. Check the number and try again.",
       "invalid_code": "That code is wrong or has expired. Check WhatsApp, or tap \"Send again\".",
       "failed": "Something went wrong. Try again."
-    }
+    },
+    "testCode": "Test site: the code for this demo number is",
+    "useTestCode": "Use it"
   },
   "Welcome": {
     "title": "Set up your business",
